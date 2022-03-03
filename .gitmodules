@@ -2,3 +2,51 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "nord-dircolors"]
+	path = nord-dircolors
+	url = https://github.com/arcticicestudio/nord-dircolors
+        shallow = True
+[submodule "jupyter/nbextensions/jupyter-vim-binding"]
+	path = jupyter/nbextensions/jupyter-vim-binding
+	url = https://github.com/lambdalisue/jupyter-vim-binding
+        shallow = True
+[submodule "nvim/nvchad"]
+	path = nvim/nvchad
+	url = https://github.com/NvChad/NvChad
+        shallow = True
+[submodule "tmux/dottmux"]
+	path = tmux/dottmux
+	url = https://github.com/gpakosz/.tmux.git
+        shallow = True
+[submodule "tmux/plugins/nord-tmux"]
+	path = tmux/plugins/nord-tmux
+	url = https://github.com/arcticicestudio/nord-tmux.git
+        shallow = True
+[submodule "tmux/plugins/tmux-prefix-highlight"]
+	path = tmux/plugins/tmux-prefix-highlight
+	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
+        shallow = True
+[submodule "tmux/plugins/tmux-resurrect"]
+	path = tmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
+        shallow = True
+[submodule "tmux/plugins/tmux-continuum"]
+	path = tmux/plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum
+        shallow = True
+[submodule "zsh/ohmyzsh"]
+	path = zsh/ohmyzsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
+        shallow = True
+[submodule "zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+        shallow = True
+[submodule "zsh/plugins/zsh-autosuggestions"]
+	path = zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+        shallow = True
+[submodule "zsh/themes/powerlevel10k"]
+	path = zsh/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
+        shallow = True
