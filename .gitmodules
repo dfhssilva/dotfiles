@@ -14,12 +14,8 @@
 	path = nvim/nvchad
 	url = https://github.com/NvChad/NvChad
         shallow = True
-[submodule "tmux/dottmux"]
-	path = tmux/dottmux
-	url = https://github.com/gpakosz/.tmux.git
-        shallow = True
-[submodule "tmux/plugins/nord-tmux"]
-	path = tmux/plugins/nord-tmux
+[submodule "tmux/themes/nord-tmux"]
+	path = tmux/themes/nord-tmux
 	url = https://github.com/arcticicestudio/nord-tmux.git
         shallow = True
 [submodule "tmux/plugins/tmux-prefix-highlight"]
@@ -37,6 +33,7 @@
 [submodule "zsh/ohmyzsh"]
 	path = zsh/ohmyzsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
+        ignore = dirty
         shallow = True
 [submodule "zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/plugins/zsh-syntax-highlighting

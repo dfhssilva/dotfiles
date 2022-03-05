@@ -50,5 +50,9 @@ return {
   {
     -- capslock.vim: Software caps lock
     "tpope/vim-capslock"
+  },
+  {
+    -- tmux_navigator.vim: Seamless navigation between tmux panes and vim splits
+    "christoomey/vim-tmux-navigator"
   }
 }
