@@ -55,7 +55,7 @@ local buttons = {
    val = {
       button("SPC f n", "  New File", ":e tmp <CR>"),
       button("SPC f f", "  Find File  ", ":Telescope find_files<CR>"),
-      button("SPC f o", "  Recent File  ", ":Telescope oldfiles<CR>"),
+      button("SPC f r", "  Recent File  ", ":Telescope oldfiles<CR>"),
       button("SPC f w", "  Find Word  ", ":Telescope live_grep<CR>"),
       button("SPC b m", "  Bookmarks  ", ":Telescope marks<CR>"),
       button("SPC t h", "  Themes  ", ":Telescope themes<CR>"),
