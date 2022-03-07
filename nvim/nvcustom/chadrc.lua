@@ -12,7 +12,10 @@ M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 -- examples of setting relative number & changing theme:
 
 M.options = {
-  timeoutlen = 1000
+  timeoutlen = 1000,
+  nvChad = {
+    copy_del = false
+  }
 }
 
 M.ui = {
