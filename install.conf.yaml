@@ -21,7 +21,7 @@
     ~/.ipython/profile_default/ipython_config.py: ipython/ipython_config.py
     ~/.ipython/profile_default/ipython_kernel_config.py: ipython/ipython_kernel_config.py
     ~/.jupyter/nbconfig/notebook.json: jupyter/notebook.json
-    ~/.local/share/jupyter/nbextensions/jupyter-vim-binding: jupyter/nbextensions/jupyter-vim-binding
+    ~/.local/share/jupyter/nbextensions: jupyter/nbextensions
     ~/.oh-my-zsh: zsh/ohmyzsh
     ~/.oh-my-zsh/custom/plugins:
       force: true
