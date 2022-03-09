@@ -14,6 +14,7 @@
     ~/.config/nvim: nvim/nvchad
     ~/.config/nvim/lua/custom: nvim/nvcustom
     ~/.config/spotify-tui/config.yml: spotify_tui.yml
+    ~/.config/tridactyl: tridactyl
     ~/.dir_colors: nord-dircolors/src/dir_colors
     ~/.gitconfig: git/gitconfig
     ~/.gitmessage: git/gitmessage
@@ -40,3 +41,4 @@
   - [git submodule update --init --recursive, Install submodules]
   - [nvim +'hi NormalFloat guibg=#1e222a' +PackerSync &, Install nvchad and plugins]
   - [tmux source-file ~/.tmux.conf, Reload Tmux environment]
+  - [curl -fsSl https://raw.githubusercontent.com/tridactyl/native_messenger/master/installers/install.sh -o /tmp/trinativeinstall.sh && sh /tmp/trinativeinstall.sh, Install Trydactyl native messenger]

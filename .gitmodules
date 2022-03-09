@@ -39,3 +39,7 @@
 	path = zsh/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
         shallow = True
+[submodule "tridactyl/themes"]
+	path = tridactyl/themes
+	url = https://github.com/bezmi/base16-tridactyl.git
+        shallow = True
