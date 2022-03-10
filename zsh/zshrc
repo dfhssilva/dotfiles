@@ -45,6 +45,11 @@ alias vim='nvim.appimage'
 alias xpl='explorer.exe'
 
 # set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes dotfiles bin if it exists
 if [ -d "$HOME/dotfiles/bin" ] ; then
     PATH="$HOME/dotfiles/bin:$PATH"
 fi
