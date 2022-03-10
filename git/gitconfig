@@ -2,12 +2,11 @@
 	name = David Silva
 	username = DavidSilva98
 	email = dfhssilva@protonmail.com
-	signingkey = 656A0BC855535AFC3FBDD973A213A51860F2547B
 [alias]
 	graph = log --graph --oneline --all
 [commit]
 	template = /home/dsilva/.gitmessage
-	gpgsign = true
+	gpgsign = false
 [credential "https://github.com"]
 	helper = !/usr/bin/gh auth git-credential
 [pull]
