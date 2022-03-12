@@ -6,6 +6,7 @@
 	path = nord-dircolors
 	url = https://github.com/arcticicestudio/nord-dircolors
         shallow = True
+        branch = develop
 [submodule "jupyter/nbextensions/jupyter-vim-binding"]
 	path = jupyter/nbextensions/jupyter-vim-binding
 	url = https://github.com/lambdalisue/jupyter-vim-binding
@@ -14,10 +15,12 @@
 	path = nvim/nvchad
 	url = https://github.com/NvChad/NvChad
         shallow = True
+        branch = main
 [submodule "tmux/themes/nord-tmux"]
 	path = tmux/themes/nord-tmux
 	url = https://github.com/arcticicestudio/nord-tmux.git
         shallow = True
+        branch = develop
 [submodule "tmux/plugins/tmux-prefix-highlight"]
 	path = tmux/plugins/tmux-prefix-highlight
 	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
