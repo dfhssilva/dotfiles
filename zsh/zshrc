@@ -12,6 +12,7 @@ DEFAULT_USER="dsilva"
 
 # Set plugins
 plugins=(
+  aws
   docker
   docker-compose
   vi-mode
