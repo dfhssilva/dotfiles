@@ -6,6 +6,8 @@
 - clean: ['~', '~/.config']
 
 - link:
+    ~/.bashrc: bash/bashrc
+    ~/.bash_logout: bash/bash_logout
     ~/.condarc: condarc
     ~/.config/htop/htoprc: htoprc
     ~/.config/joplin/keymap.json: joplin/keymap.json
