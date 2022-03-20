@@ -24,6 +24,9 @@ bind ,<Space> nohlsearch
 " Smooth scrolling, yes please. This is still a bit janky in Tridactyl.
 set smoothscroll true
 
+" Unbind Shift-Escape to exit ignore mode (interferes with jupyterlab-vim)
+unbind --mode=ignore <S-Escape>
+
 " The default jump of 10 is a bit much.
 bind j scrollline 5
 bind k scrollline -5

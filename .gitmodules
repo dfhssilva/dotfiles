@@ -7,10 +7,6 @@
 	url = https://github.com/arcticicestudio/nord-dircolors
         shallow = True
         branch = develop
-[submodule "jupyter/nbextensions/jupyter-vim-binding"]
-	path = jupyter/nbextensions/jupyter-vim-binding
-	url = https://github.com/lambdalisue/jupyter-vim-binding
-        shallow = True
 [submodule "nvim/nvchad"]
 	path = nvim/nvchad
 	url = https://github.com/NvChad/NvChad
