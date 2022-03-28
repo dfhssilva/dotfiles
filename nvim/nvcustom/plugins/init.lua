@@ -2,31 +2,6 @@
 
 return {
   {
-    -- AutoSave: saving your work before the world collapses
-    "Pocco81/AutoSave.nvim",
-    config = function()
-      local autosave = require "autosave"
-      autosave.setup {
-        enabled = true,
-        execution_message = " at: " .. vim.fn.strftime("%H:%M:%S"),
-        events = { "InsertLeave", "TextChanged" },
-        conditions = {
-          exists = true,
-          filename_is_not = {},
-          filetype_is_not = {},
-          modifiable = true,
-        },
-        clean_command_line_interval = 2500,
-        on_off_commands = false,
-        write_all_buffers = false,
-        debounce_delay = 250
-      }
-    end,
-    setup = function()
-      require("core.utils").packer_lazy_load "AutoSave.nvim"
-    end
-  },
-  {
     -- LSP-installer: allows you to seamlessly manage LSP servers locally
     "williamboman/nvim-lsp-installer",
     opt = true,
