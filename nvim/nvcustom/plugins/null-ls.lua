@@ -17,7 +17,16 @@ local sources = {
 	-- Python
 	b.formatting.isort,
 	b.formatting.black,
-        b.diagnostics.pydocstyle
+        b.diagnostics.pydocstyle,
+
+        -- Sql
+        b.formatting.sqlformat.with({
+          generator_opts = {
+            command = "sqlformat",
+            args = { "-r", "-k", "upper", "-" },
+            to_stdin = true,
+          },
+        })
 }
 
 local M = {}
