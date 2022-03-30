@@ -42,6 +42,3 @@
 	path = tridactyl/themes
 	url = https://github.com/bezmi/base16-tridactyl.git
         shallow = True
-[submodule "awesome/awesome-copycats"]
-	path = awesome/awesome-copycats
-	url = https://github.com/lcpz/awesome-copycats.git
