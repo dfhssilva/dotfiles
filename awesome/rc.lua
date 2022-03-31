@@ -50,7 +50,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init("~/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 local terminal = "kitty"
@@ -361,10 +361,14 @@ globalkeys = gears.table.join(
 		awful.spawn(browser)
 	end, { description = "run browser", group = "launcher" }),
 
-	-- Rofi: check https://github.com/DaveDavenport/rofi for more details
+	-- -- Rofi: check https://github.com/DaveDavenport/rofi for more details
+	-- awful.key({ modkey }, "r", function()
+	-- 	os.execute(string.format("rofi -show %s -theme %s", "run", "dmenu"))
+	-- end, { description = "show rofi", group = "launcher" }),
+	-- Prompt
 	awful.key({ modkey }, "r", function()
-		os.execute(string.format("rofi -show %s -theme %s", "run", "dmenu"))
-	end, { description = "show rofi", group = "launcher" }),
+		awful.screen.focused().mypromptbox:run()
+	end, { description = "run prompt", group = "launcher" }),
 
 	-- Lua Prompt (TODO: can we do this in rofi?)
 	awful.key({ modkey }, "x", function()

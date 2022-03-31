@@ -9,8 +9,7 @@
     ~/.bashrc: bash/bashrc
     ~/.bash_logout: bash/bash_logout
     ~/.condarc: condarc
-    ~/.config/awesome/rc.lua: awesome/rc.lua
-    ~/.config/awesome/theme.lua: awesome/theme.lua
+    ~/.config/awesome: awesome
     ~/.config/htop/htoprc: htoprc
     ~/.config/joplin/keymap.json: joplin/keymap.json
     ~/.config/joplin/settings.json: joplin/settings.json

@@ -1,5 +1,5 @@
 ---------------------------
--- Default awesome theme --
+-- Nord minimal theme --
 ---------------------------
 
 local theme_assets = require("beautiful.theme_assets")
@@ -7,29 +7,53 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
-local themes_path = gfs.get_themes_dir()
+local theme_path = gfs.get_themes_dir()
 
-local theme = {}
+-- inherit default theme
+local theme = dofile(theme_path .. "default/theme.lua")
+-- load vector assets' generators for this theme
 
-theme.font = "sans 8"
+--local wibar = require("wibar")
+theme.nord0 = "#2E3440"
+theme.nord1 = "#3B4252"
+theme.nord2 = "#434C5E"
+theme.nord3 = "#4C566A"
+theme.nord4 = "#D8DEE9"
+theme.nord5 = "#E5E9F0"
+theme.nord6 = "#ECEFF4"
+theme.nord7 = "#8FBCBB"
+theme.nord8 = "#88C0D0"
+theme.nord9 = "#81A1C1"
+theme.nord10 = "#5E81AC"
+theme.nord11 = "#BF616A"
+theme.nord12 = "#D08770"
+theme.nord13 = "#EBCB8B"
+theme.nord14 = "#A3BE8C"
+theme.nord15 = "#B48EAD"
 
-theme.bg_normal = "#222222"
-theme.bg_focus = "#535d6c"
-theme.bg_urgent = "#ff0000"
-theme.bg_minimize = "#444444"
+theme.font = "Roboto 10"
+theme.transparent = "#00000000"
+
+theme.bg_normal = theme.nord0
+theme.bg_focus = theme.bg_normal
+theme.bg_urgent = theme.bg_normal
+theme.bg_minimize = theme.bg_normal
 theme.bg_systray = theme.bg_normal
 
-theme.fg_normal = "#aaaaaa"
-theme.fg_focus = "#ffffff"
-theme.fg_urgent = "#ffffff"
-theme.fg_minimize = "#ffffff"
+theme.fg_normal = theme.nord4
+theme.fg_focus = theme.fg_normal
+theme.fg_urgent = theme.fg_normal
+theme.fg_minimize = theme.fg_normal
 
-theme.useless_gap = dpi(0)
-theme.border_width = dpi(1)
-theme.border_normal = "#000000"
-theme.border_focus = "#535d6c"
-theme.border_marked = "#91231c"
+theme.useless_gap = dpi(2)
+theme.border_width = dpi(2)
+theme.border_focus = theme.nord9
+theme.border_normal = theme.nord0
+theme.border_marked = theme.nord11
 
+theme.tasklist_bg_focus = theme.nord0
+theme.tasklist_icon_size = dpi(2)
+theme.tasklist_plain_task_name = true
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
@@ -42,6 +66,7 @@ theme.border_marked = "#91231c"
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
+theme.taglist_spacing = dpi(5)
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
@@ -57,61 +82,12 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_submenu_icon = themes_path .. "default/submenu.png"
+theme.menu_submenu_icon = theme_path .. "../defaults/submenu.png"
 theme.menu_height = dpi(15)
 theme.menu_width = dpi(100)
 
--- You can add as many variables as
--- you wish and access them by using
--- beautiful.variable in your rc.lua
---theme.bg_widget = "#cc0000"
-
--- Define the image to load
-theme.titlebar_close_button_normal = themes_path .. "default/titlebar/close_normal.png"
-theme.titlebar_close_button_focus = themes_path .. "default/titlebar/close_focus.png"
-
-theme.titlebar_minimize_button_normal = themes_path .. "default/titlebar/minimize_normal.png"
-theme.titlebar_minimize_button_focus = themes_path .. "default/titlebar/minimize_focus.png"
-
-theme.titlebar_ontop_button_normal_inactive = themes_path .. "default/titlebar/ontop_normal_inactive.png"
-theme.titlebar_ontop_button_focus_inactive = themes_path .. "default/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_active = themes_path .. "default/titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_active = themes_path .. "default/titlebar/ontop_focus_active.png"
-
-theme.titlebar_sticky_button_normal_inactive = themes_path .. "default/titlebar/sticky_normal_inactive.png"
-theme.titlebar_sticky_button_focus_inactive = themes_path .. "default/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_active = themes_path .. "default/titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_active = themes_path .. "default/titlebar/sticky_focus_active.png"
-
-theme.titlebar_floating_button_normal_inactive = themes_path .. "default/titlebar/floating_normal_inactive.png"
-theme.titlebar_floating_button_focus_inactive = themes_path .. "default/titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_active = themes_path .. "default/titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_active = themes_path .. "default/titlebar/floating_focus_active.png"
-
-theme.titlebar_maximized_button_normal_inactive = themes_path .. "default/titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive = themes_path .. "default/titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_active = themes_path .. "default/titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_active = themes_path .. "default/titlebar/maximized_focus_active.png"
-
-theme.wallpaper = themes_path .. "default/background.png"
-
--- You can use your own layout icons like this:
-theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"
-theme.layout_fairv = themes_path .. "default/layouts/fairvw.png"
-theme.layout_floating = themes_path .. "default/layouts/floatingw.png"
-theme.layout_magnifier = themes_path .. "default/layouts/magnifierw.png"
-theme.layout_max = themes_path .. "default/layouts/maxw.png"
-theme.layout_fullscreen = themes_path .. "default/layouts/fullscreenw.png"
-theme.layout_tilebottom = themes_path .. "default/layouts/tilebottomw.png"
-theme.layout_tileleft = themes_path .. "default/layouts/tileleftw.png"
-theme.layout_tile = themes_path .. "default/layouts/tilew.png"
-theme.layout_tiletop = themes_path .. "default/layouts/tiletopw.png"
-theme.layout_spiral = themes_path .. "default/layouts/spiralw.png"
-theme.layout_dwindle = themes_path .. "default/layouts/dwindlew.png"
-theme.layout_cornernw = themes_path .. "default/layouts/cornernww.png"
-theme.layout_cornerne = themes_path .. "default/layouts/cornernew.png"
-theme.layout_cornersw = themes_path .. "default/layouts/cornersww.png"
-theme.layout_cornerse = themes_path .. "default/layouts/cornersew.png"
+theme.wallpaper = "~/.config/awesome/wallpaper.jpg"
+theme.background = theme.nord0
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)
@@ -120,6 +96,14 @@ theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
 
-return theme
+theme.taglist_font = "Roboto 10"
+theme.taglist_bg_focus = theme.bg_normal
+theme.taglist_fg_focus = theme.nord13
+theme.taglist_bg_occupied = theme.bg_normal
+theme.taglist_fg_occupied = theme.nord14
+theme.taglist_bg_empty = theme.bg_normal
+theme.taglist_fg_empty = theme.nord9
+theme.taglist_bg_urgent = theme.bg_normal
+theme.taglist_fg_urgent = theme.nord11
 
--- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
+return theme
