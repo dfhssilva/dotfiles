@@ -341,7 +341,11 @@ globalkeys = gears.table.join(
 		local screen = awful.screen.focused()
 		local layout = awful.layout.get(screen)
 		if layout == awful.layout.suit.max then
-			awful.layout.set(prev_layout)
+			if prev_layout == nil then
+				awful.layout.set(awful.layout.layouts[1])
+			else
+				awful.layout.set(prev_layout)
+			end
 		else
 			prev_layout = layout
 			awful.layout.set(awful.layout.suit.max)
