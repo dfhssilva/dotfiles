@@ -9,17 +9,17 @@
     ~/.bash_profile: bash/bash_profile
     ~/.bashrc: bash/bashrc
     ~/.bash_logout: bash/bash_logout
-    ~/.condarc: condarc
+    ~/.condarc: misc/condarc
     ~/.config/awesome: awesome
-    ~/.config/htop/htoprc: htoprc
+    ~/.config/htop/htoprc: misc/htoprc
     ~/.config/joplin/keymap.json: joplin/keymap.json
     ~/.config/joplin/settings.json: joplin/settings.json
-    ~/.config/kitty/kitty.conf: kitty.conf
+    ~/.config/kitty/kitty.conf: misc/kitty.conf
     ~/.config/nvim: nvim/nvchad
     ~/.config/nvim/lua/custom: nvim/nvcustom
-    ~/.config/picom.conf: picom.conf
-    ~/.config/rofi: rofi
-    ~/.config/spotify-tui/config.yml: spotify_tui.yml
+    ~/.config/picom.conf: misc/picom.conf
+    ~/.config/rofi/nord.rasi: misc/nord.rasi
+    ~/.config/spotify-tui/config.yml: misc/spotify_tui.yml
     ~/.config/tridactyl: tridactyl
     ~/.dir_colors: nord-dircolors/src/dir_colors
     ~/.gitconfig: git/gitconfig
@@ -30,12 +30,12 @@
     ~/.oh-my-zsh/custom/plugins:
       force: true
       path: zsh/plugins
-    ~/.vifm/vifmrc: vifmrc
+    ~/.vifm/vifmrc: misc/vifmrc
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux/plugins: tmux/plugins
     ~/.tmux/themes: tmux/themes
-    ~/.xinitrc: xinitrc
-    ~/.Xmodmap: Xmodmap
+    ~/.xinitrc: xorg/xinitrc
+    ~/.Xmodmap: xorg/Xmodmap
     ~/.zshrc: zsh/zshrc
     ~/.zprofile: zsh/zprofile
 
