@@ -15,7 +15,9 @@ local naughty = require("naughty")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+-- require("awful.hotkeys_popup.keys")
+-- Custom scripts
+local xrandr = require("xrandr")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -260,12 +262,6 @@ globalkeys = gears.table.join(
 		naughty.destroy_all_notifications()
 	end, { description = "destroy all notifications", group = "hotkeys" }),
 
-	-- Take a screenshot
-	-- https://github.com/lcpz/dots/blob/master/bin/screenshot
-	awful.key({ modkey }, "p", function()
-		os.execute("screenshot")
-	end, { description = "take a screenshot", group = "hotkeys" }),
-
 	-- X screen locker
 	awful.key({ modkey }, "Escape", function()
 		os.execute(scrlocker)
@@ -364,6 +360,10 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "b", function()
 		awful.spawn(browser)
 	end, { description = "run browser", group = "launcher" }),
+
+	awful.key({ modkey }, "p", function()
+		xrandr.xrandr()
+	end, { description = "xrandr monitor", group = "screen" }),
 
 	-- Rofi: check https://github.com/DaveDavenport/rofi for more details
 	awful.key({ modkey }, "r", function()
