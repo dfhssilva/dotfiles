@@ -365,14 +365,12 @@ globalkeys = gears.table.join(
 		awful.spawn(browser)
 	end, { description = "run browser", group = "launcher" }),
 
-	-- -- Rofi: check https://github.com/DaveDavenport/rofi for more details
-	-- awful.key({ modkey }, "r", function()
-	-- 	os.execute(string.format("rofi -show %s -theme %s", "run", "dmenu"))
-	-- end, { description = "show rofi", group = "launcher" }),
-	-- Prompt
+	-- Rofi: check https://github.com/DaveDavenport/rofi for more details
 	awful.key({ modkey }, "r", function()
-		awful.screen.focused().mypromptbox:run()
-	end, { description = "run prompt", group = "launcher" }),
+		os.execute(
+			"rofi -modi combi,'power:rofi-power-menu --choices=shutdown/reboot/suspend/logout/lockscreen --confirm=shutdown/reboot' -combi-modi window,drun,ssh,power -theme nord -show combi -show-icons -display-combi 'rofi'"
+		)
+	end, { description = "show rofi", group = "launcher" }),
 
 	-- Lua Prompt (TODO: can we do this in rofi?)
 	awful.key({ modkey }, "x", function()
@@ -591,3 +589,6 @@ client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
 -- }}}
+
+-- Autostart programs
+awful.spawn.with_shell("~/.config/awesome/autorun.sh")

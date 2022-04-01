@@ -16,6 +16,7 @@
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.config/nvim: nvim/nvchad
     ~/.config/nvim/lua/custom: nvim/nvcustom
+    ~/.config/rofi: rofi
     ~/.config/spotify-tui/config.yml: spotify_tui.yml
     ~/.config/tridactyl: tridactyl
     ~/.dir_colors: nord-dircolors/src/dir_colors
