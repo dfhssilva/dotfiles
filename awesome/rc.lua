@@ -13,11 +13,9 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
--- require("awful.hotkeys_popup.keys")
 -- Custom scripts
 local xrandr = require("xrandr")
+local battery = require("battery")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -68,22 +66,10 @@ local modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-	awful.layout.suit.tile.left,
+	awful.layout.suit.tile,
 	awful.layout.suit.floating,
 	awful.layout.suit.fair,
 	awful.layout.suit.max,
-	-- awful.layout.suit.tile,
-	-- awful.layout.suit.tile.bottom,
-	-- awful.layout.suit.tile.top,
-	-- awful.layout.suit.fair.horizontal,
-	-- awful.layout.suit.spiral,
-	-- awful.layout.suit.spiral.dwindle,
-	-- awful.layout.suit.max.fullscreen,
-	-- awful.layout.suit.magnifier,
-	-- awful.layout.suit.corner.nw,
-	-- awful.layout.suit.corner.ne,
-	-- awful.layout.suit.corner.sw,
-	-- awful.layout.suit.corner.se,
 }
 -- }}}
 
@@ -236,6 +222,7 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
+			spacing = 5,
 			mykeyboardlayout,
 			wibox.widget.systray(),
 			mytextclock,
@@ -246,13 +233,9 @@ end)
 -- }}}
 
 -- {{{ Mouse bindings
-root.buttons(gears.table.join(
-	awful.button({}, 3, function()
-		mymainmenu:toggle()
-	end),
-	awful.button({}, 4, awful.tag.viewnext),
-	awful.button({}, 5, awful.tag.viewprev)
-))
+root.buttons(gears.table.join(awful.button({}, 3, function()
+	mymainmenu:toggle()
+end)))
 -- }}}
 
 -- {{{ Key bindings
@@ -262,13 +245,18 @@ globalkeys = gears.table.join(
 		naughty.destroy_all_notifications()
 	end, { description = "destroy all notifications", group = "hotkeys" }),
 
+	-- Show help
+	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
+
 	-- betterlockscreen
 	awful.key({ modkey }, "Escape", function()
 		os.execute("betterlockscreen --lock")
 	end, { description = "lock screen", group = "hotkeys" }),
 
-	-- Show help
-	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
+	-- Printscreen
+	awful.key({}, "Print", function()
+		awful.util.spawn("flameshot gui")
+	end),
 
 	-- Tag browsing
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
@@ -356,6 +344,27 @@ globalkeys = gears.table.join(
 		end
 	end, { description = "restore minimized", group = "client" }),
 
+	-- Volume Keys
+	awful.key({}, "XF86AudioLowerVolume", function()
+		awful.util.spawn("amixer -D pulse sset Master 5%-", false)
+	end),
+	awful.key({}, "XF86AudioRaiseVolume", function()
+		awful.util.spawn("amixer -D pulse sset Master 5%+", false)
+	end),
+	awful.key({}, "XF86AudioMute", function()
+		awful.util.spawn("amixer -D pulse set Master 1+ toggle", false)
+	end),
+	-- Media Keys
+	awful.key({}, "XF86AudioPlay", function()
+		awful.util.spawn("playerctl play-pause", false)
+	end),
+	awful.key({}, "XF86AudioNext", function()
+		awful.util.spawn("playerctl next", false)
+	end),
+	awful.key({}, "XF86AudioPrev", function()
+		awful.util.spawn("playerctl previous", false)
+	end),
+
 	-- User programs
 	awful.key({ modkey }, "b", function()
 		awful.spawn(browser)
@@ -365,6 +374,11 @@ globalkeys = gears.table.join(
 		xrandr.xrandr()
 	end, { description = "xrandr monitor", group = "screen" }),
 
+	-- Rofi calculator
+	awful.key({ modkey }, "c", function()
+		os.execute("rofi -modi calc -theme nord -no-show-match -no-sort -show calc")
+	end, { description = "show rofi calculcator", group = "launcher" }),
+
 	-- Rofi: check https://github.com/DaveDavenport/rofi for more details
 	awful.key({ modkey }, "r", function()
 		os.execute(
@@ -372,7 +386,7 @@ globalkeys = gears.table.join(
 		)
 	end, { description = "show rofi", group = "launcher" }),
 
-	-- Lua Prompt (TODO: can we do this in rofi?)
+	-- Lua Prompt
 	awful.key({ modkey }, "x", function()
 		awful.prompt.run({
 			prompt = "Run Lua code: ",
@@ -588,6 +602,14 @@ end)
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
+-- }}}
+
+-- {{{ Timer
+-- Set timer to show battery warning
+battimer = timer({ timeout = 120 })
+battimer:connect_signal("timeout", battery.bat_notification)
+battimer:start()
+
 -- }}}
 
 -- Autostart programs
