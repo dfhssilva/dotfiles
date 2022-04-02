@@ -6,7 +6,6 @@
 - clean: ['~', '~/.config']
 
 - link:
-    ~/.bash_profile: bash/bash_profile
     ~/.bashrc: bash/bashrc
     ~/.bash_logout: bash/bash_logout
     ~/.condarc: misc/condarc

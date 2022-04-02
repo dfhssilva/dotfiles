@@ -6,4 +6,5 @@ function run {
 	fi
 }
 
+# Activate second screen
 run xrandr --output HDMI-1-0 --auto --right-of eDP1
