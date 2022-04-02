@@ -262,9 +262,9 @@ globalkeys = gears.table.join(
 		naughty.destroy_all_notifications()
 	end, { description = "destroy all notifications", group = "hotkeys" }),
 
-	-- X screen locker
+	-- betterlockscreen
 	awful.key({ modkey }, "Escape", function()
-		os.execute(scrlocker)
+		os.execute("betterlockscreen --lock")
 	end, { description = "lock screen", group = "hotkeys" }),
 
 	-- Show help
@@ -368,7 +368,7 @@ globalkeys = gears.table.join(
 	-- Rofi: check https://github.com/DaveDavenport/rofi for more details
 	awful.key({ modkey }, "r", function()
 		os.execute(
-			"rofi -modi combi,'power:rofi-power-menu --choices=shutdown/reboot/suspend/logout/lockscreen --confirm=shutdown/reboot' -combi-modi window,drun,ssh,power -theme nord -show combi -show-icons -display-combi 'rofi'"
+			"rofi -modi combi,'power:rofi-power-menu --choices=shutdown/reboot/suspend/logout --confirm=shutdown/reboot' -combi-modi window,drun,ssh,power -theme nord -show combi -show-icons -display-combi 'rofi'"
 		)
 	end, { description = "show rofi", group = "launcher" }),
 
