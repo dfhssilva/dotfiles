@@ -10,15 +10,15 @@
     ~/.bash_logout: bash/bash_logout
     ~/.condarc: misc/condarc
     ~/.config/awesome: awesome
-    ~/.config/fontconfig/fonts.conf: misc/fonts.conf
+    ~/.config/fontconfig/fonts.conf: fontconfig/fonts.conf
     ~/.config/htop/htoprc: misc/htoprc
     ~/.config/joplin/keymap.json: joplin/keymap.json
     ~/.config/joplin/settings.json: joplin/settings.json
     ~/.config/kitty/kitty.conf: misc/kitty.conf
     ~/.config/nvim: nvim/nvchad
     ~/.config/nvim/lua/custom: nvim/nvcustom
-    ~/.config/picom.conf: misc/picom.conf
-    ~/.config/rofi/nord.rasi: misc/nord.rasi
+    ~/.config/picom.conf: picom/picom.conf
+    ~/.config/rofi/nord.rasi: rofi/nord.rasi
     ~/.config/spotify-tui/config.yml: misc/spotify_tui.yml
     ~/.config/tridactyl: tridactyl
     ~/.dir_colors: nord-dircolors/src/dir_colors
