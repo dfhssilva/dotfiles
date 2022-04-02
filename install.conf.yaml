@@ -10,6 +10,7 @@
     ~/.bash_logout: bash/bash_logout
     ~/.condarc: misc/condarc
     ~/.config/awesome: awesome
+    ~/.config/fontconfig/fonts.conf: misc/fonts.conf
     ~/.config/htop/htoprc: misc/htoprc
     ~/.config/joplin/keymap.json: joplin/keymap.json
     ~/.config/joplin/settings.json: joplin/settings.json
