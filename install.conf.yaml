@@ -22,7 +22,7 @@
     ~/.config/picom.conf: picom/picom.conf
     ~/.config/rofi/nord.rasi: rofi/nord.rasi
     ~/.config/spotify-tui/config.yml: misc/spotify_tui.yml
-    ~/.config/tridactyl: tridactyl
+    ~/.config/tridactyl: firefox/tridactyl
     ~/.dir_colors: nord-dircolors/src/dir_colors
     ~/.gitconfig: git/gitconfig
     ~/.gitmessage: git/gitmessage
@@ -45,6 +45,6 @@
 - shell:
   - [git submodule update --init --recursive, Install submodules]
   - [nvim +'hi NormalFloat guibg=#1e222a' +PackerSync &, Install nvchad and plugins]
-  - [tmux source-file ~/.tmux.conf, Reload Tmux environment]
+  - [firefox/install-firefox-theme.sh -g -p default-release, Install firefox nordic theme]  # Change the -p flag value according to firefox profile
   - [curl -fsSl https://raw.githubusercontent.com/tridactyl/native_messenger/master/installers/install.sh -o /tmp/trinativeinstall.sh && sh /tmp/trinativeinstall.sh, Install Trydactyl native messenger]
   - [pip install jupyterlab-vim, Install jupyterlab-vim user-wide]

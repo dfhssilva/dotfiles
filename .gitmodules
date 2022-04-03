@@ -34,11 +34,11 @@
 	path = zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
         shallow = True
-[submodule "tridactyl/themes"]
-	path = tridactyl/themes
-	url = https://github.com/bezmi/base16-tridactyl.git
-        shallow = True
 [submodule "zsh/plugins/pure"]
 	path = zsh/plugins/pure
 	url = https://github.com/sindresorhus/pure.git
+        shallow = True
+[submodule "firefox/firefox-nordic-theme"]
+	path = firefox/firefox-nordic-theme
+	url = https://github.com/EliverLara/firefox-nordic-theme.git
         shallow = True
