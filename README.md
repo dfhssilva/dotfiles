@@ -32,7 +32,7 @@ systemctl enable betterlockscreen@$USER
 ```
 cp misc/optimus-manager.conf /etc/optimus-manager
 ```
-- [Allow prime-switch to be run by the user](https://github.com/Askannz/optimus-manager/issues/404). Append to /etc/sudoers (change <username>):
+- [Allow prime-switch to be run by the user](https://github.com/Askannz/optimus-manager/issues/404). Append to /etc/sudoers (change \<username\>):
 ```
 <username> ALL = NOPASSWD: /usr/bin/prime-switch
 ```
