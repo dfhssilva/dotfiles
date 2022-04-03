@@ -379,6 +379,10 @@ globalkeys = gears.table.join(
 		xrandr.xrandr()
 	end, { description = "xrandr monitor", group = "screen" }),
 
+	awful.key({ modkey }, "e", function()
+		os.execute("thunderbird &")
+	end, { description = "email client", group = "hotkeys" }),
+
 	-- Rofi calculator
 	awful.key({ modkey }, "c", function()
 		os.execute("rofi -modi calc -theme nord -no-show-match -no-sort -show calc")
