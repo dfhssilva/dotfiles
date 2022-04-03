@@ -43,6 +43,6 @@ blueman-applet &                                                    # bluetooth 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &         # control system-wide privileges
 eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) # credential manager
 xfce4-power-manager &                                               # power manager
-
-# start window manager
-exec awesome
+/usr/bin/prime-offload                                              # prime-offload (nvidia gpu)
+awesome                                                             # --- start window manager ---
+sudo /usr/bin/prime-switch                                          # execute after logout (necessary for optimus manager - nvidia gpu)
