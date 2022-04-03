@@ -1,3 +1,7 @@
+# Set qt theme with kvantum
+export QT_STYLE_OVERRIDE=kvantum
+
+# Startx silent
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startx -- vt1 &> /dev/null
 fi

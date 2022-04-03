@@ -34,9 +34,6 @@ bindkey '^x' autosuggest-clear  # ctrl + x
 # Activate nord dircolors
 test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
 # Aliases
 alias watch-nvidia="watch -n 1 nvidia-smi"
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
