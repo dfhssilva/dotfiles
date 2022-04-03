@@ -47,5 +47,4 @@
   - [git submodule update --init --recursive, Install submodules]
   - [nvim +'hi NormalFloat guibg=#1e222a' +PackerSync &, Install nvchad and plugins]
   - [firefox/install-firefox-theme.sh -g -p default-release, Install firefox nordic theme]  # Change the -p flag value according to firefox profile
-  - [curl -fsSl https://raw.githubusercontent.com/tridactyl/native_messenger/master/installers/install.sh -o /tmp/trinativeinstall.sh && sh /tmp/trinativeinstall.sh, Install Trydactyl native messenger]
   - [pip install jupyterlab-vim, Install jupyterlab-vim user-wide]

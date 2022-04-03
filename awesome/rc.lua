@@ -248,6 +248,11 @@ globalkeys = gears.table.join(
 	-- Show help
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 
+	-- Thunar file manager
+	awful.key({ modkey }, "f", function()
+		os.execute("thunar &")
+	end, { description = "file manager", group = "hotkeys" }),
+
 	-- betterlockscreen
 	awful.key({ modkey }, "Escape", function()
 		os.execute("betterlockscreen --lock")
@@ -255,7 +260,7 @@ globalkeys = gears.table.join(
 
 	-- Printscreen
 	awful.key({}, "Print", function()
-		awful.util.spawn("flameshot gui")
+		awful.util.spawn("gnome-screenshot -i")
 	end),
 
 	-- Tag browsing
