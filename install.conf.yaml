@@ -27,6 +27,7 @@
     ~/.gitconfig: git/gitconfig
     ~/.gitmessage: git/gitmessage
     ~/.gtkrc-2.0: gtk-2.0/gtkrc-2.0
+    ~/.icons: icons
     ~/.ipython/profile_default/ipython_config.py: ipython/ipython_config.py
     ~/.ipython/profile_default/ipython_kernel_config.py: ipython/ipython_kernel_config.py
     ~/.oh-my-zsh: zsh/ohmyzsh
