@@ -34,11 +34,7 @@
 	path = zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
         shallow = True
-[submodule "zsh/themes/powerlevel10k"]
-	path = zsh/themes/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git
-        shallow = True
-[submodule "tridactyl/themes"]
-	path = tridactyl/themes
-	url = https://github.com/bezmi/base16-tridactyl.git
+[submodule "zsh/plugins/pure"]
+	path = zsh/plugins/pure
+	url = https://github.com/sindresorhus/pure.git
         shallow = True

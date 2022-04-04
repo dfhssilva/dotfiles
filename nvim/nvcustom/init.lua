@@ -1,15 +1,3 @@
--- This is where your custom modules and plugins go.
--- Please check NvChad docs if you're totally new to nvchad + dont know lua!!
-
---------------------------------------------------------------------
-
--- NOTE: we heavily suggest using Packer's lazy loading (with the 'event', 'cmd' fields)
--- see: https://github.com/wbthomason/packer.nvim
--- https://nvchad.github.io/config/walkthrough
-
--- Set maplocalleader to "," instead of the "\" default
-vim.g.maplocalleader = ','
-
 -- MAPPINGS
 local map = require("core.utils").map
 

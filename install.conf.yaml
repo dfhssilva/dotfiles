@@ -8,38 +8,30 @@
 - link:
     ~/.bashrc: bash/bashrc
     ~/.bash_logout: bash/bash_logout
-    ~/.condarc: condarc
-    ~/.config/htop/htoprc: htoprc
+    ~/.config/conda/condarc: misc/condarc
+    ~/.config/dir_colors: nord-dircolors/src/dir_colors
+    ~/.config/git/config: git/gitconfig
+    ~/.config/git/message: git/gitmessage
+    ~/.config/htop/htoprc: misc/htoprc
+    ~/.config/ipython/profile_default/ipython_config.py: ipython/ipython_config.py
+    ~/.config/ipython/profile_default/ipython_kernel_config.py: ipython/ipython_kernel_config.py
     ~/.config/joplin/keymap.json: joplin/keymap.json
     ~/.config/joplin/settings.json: joplin/settings.json
-    ~/.config/kitty/kitty.conf: kitty.conf
     ~/.config/nvim: nvim/nvchad
     ~/.config/nvim/lua/custom: nvim/nvcustom
-    ~/.config/spotify-tui/config.yml: spotify_tui.yml
-    ~/.config/tridactyl: tridactyl
-    ~/.dir_colors: nord-dircolors/src/dir_colors
-    ~/.gitconfig: git/gitconfig
-    ~/.gitmessage: git/gitmessage
-    ~/.ipython/profile_default/ipython_config.py: ipython/ipython_config.py
-    ~/.ipython/profile_default/ipython_kernel_config.py: ipython/ipython_kernel_config.py
-    ~/.oh-my-zsh: zsh/ohmyzsh
-    ~/.oh-my-zsh/custom/plugins:
+    ~/.config/oh-my-zsh: zsh/ohmyzsh
+    ~/.config/oh-my-zsh/custom/plugins:
       force: true
       path: zsh/plugins
-    ~/.oh-my-zsh/custom/themes:
-      force: true
-      path: zsh/themes
-    ~/.p10k.zsh: zsh/p10k.zsh
-    ~/.vifm/vifmrc: vifmrc
-    ~/.tmux.conf: tmux/tmux.conf
-    ~/.tmux/plugins: tmux/plugins
-    ~/.tmux/themes: tmux/themes
-    ~/.Xmodmap: Xmodmap
-    ~/.zshrc: zsh/zshrc
+    ~/.config/tmux/tmux.conf: tmux/tmux.conf
+    ~/.config/tmux/plugins: tmux/plugins
+    ~/.config/tmux/themes: tmux/themes
+    ~/.config/vifm/vifmrc: misc/vifmrc
+    ~/.config/zsh/.zshrc: zsh/zshrc
+    ~/.zprofile: zsh/zprofile
 
 - shell:
   - [git submodule update --init --recursive, Install submodules]
   - [nvim +'hi NormalFloat guibg=#1e222a' +PackerSync &, Install nvchad and plugins]
-  - [tmux source-file ~/.tmux.conf, Reload Tmux environment]
-  - [curl -fsSl https://raw.githubusercontent.com/tridactyl/native_messenger/master/installers/install.sh -o /tmp/trinativeinstall.sh && sh /tmp/trinativeinstall.sh, Install Trydactyl native messenger]
   - [pip install jupyterlab-vim, Install jupyterlab-vim user-wide]
+  - [pip install "https://github.com/sbrisard/nord_pygments/archive/refs/tags/v0.1.zip", Install pygments nord style]

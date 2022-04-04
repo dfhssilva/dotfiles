@@ -5,8 +5,8 @@
 [alias]
 	graph = log --graph --oneline --all
 [commit]
-	template = /home/dsilva/.gitmessage
-	gpgsign = false
+	template = ~/.config/git/message
+	gpgsign = False
 [credential "https://github.com"]
 	helper = !/usr/bin/gh auth git-credential
 [pull]

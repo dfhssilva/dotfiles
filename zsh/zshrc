@@ -1,13 +1,7 @@
-# Enable Powerlevel10k instant prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
+# ------------------- Zsh configuration -------------------
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.config/oh-my-zsh"
 
-# Set Zsh Theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
 DEFAULT_USER="dsilva"
 
 # Set plugins
@@ -21,9 +15,16 @@ plugins=(
   gcloud
 )
 
+# Set prompt theme
+fpath+=$ZSH/custom/plugins/pure
+autoload -U promptinit; promptinit
+prompt pure
+
 source $ZSH/oh-my-zsh.sh
 
-# ------------------- User configuration -------------------
+# Move zcompdump files to XDF_CACHE_HOME
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+
 # Vi-mode settings
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
@@ -33,17 +34,16 @@ bindkey -v
 bindkey '^f' autosuggest-accept  # ctrl + f
 bindkey '^x' autosuggest-clear  # ctrl + x
 
+# ------------------- User configuration -------------------
 # Activate nord dircolors
-test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+test -r "${XDG_CONFIG_HOME}/.dir_colors" && eval $(dircolors $XDG_CONFIG_HOME/.dir_colors)
 
 # Aliases
 alias watch-nvidia="watch -n 1 nvidia-smi"
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 alias vim='nvim.appimage'
 alias xpl='explorer.exe'
+alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget-hsts"'
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -60,13 +60,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# Set env variables
-export VISUAL="$HOME/bin/nvim.appimage"
-export EDITOR="$HOME/bin/nvim.appimage"
-export TERM="xterm-256color"
-export WH="/mnt/c/Users/dsilva"
-export GOOGLE_APPLICATION_CREDENTIALS="$HOME/gcloud_keys.json"
-
 # ------------------- External configurations -------------------
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -82,6 +75,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
