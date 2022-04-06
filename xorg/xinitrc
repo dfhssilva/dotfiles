@@ -47,7 +47,7 @@ xfce4-power-manager &                                               # power mana
 
 # user programs
 vorta --daemonize
-protonmail-bridge &
+protonmail-bridge --no-window &
 
 # window manager
 /usr/bin/prime-offload     # prime-offload (nvidia gpu)

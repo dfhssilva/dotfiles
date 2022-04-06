@@ -21,7 +21,6 @@
     ~/.config/nvim/lua/custom: nvim/nvcustom
     ~/.config/picom.conf: picom/picom.conf
     ~/.config/rofi/nord.rasi: rofi/nord.rasi
-    ~/.config/spotify-tui/config.yml: misc/spotify_tui.yml
     ~/.config/tridactyl: firefox/tridactyl
     ~/.dir_colors: nord-dircolors/src/dir_colors
     ~/.gitconfig: git/gitconfig
