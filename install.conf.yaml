@@ -22,6 +22,7 @@
     ~/.config/picom.conf: picom/picom.conf
     ~/.config/rofi/nord.rasi: rofi/nord.rasi
     ~/.config/tridactyl: firefox/tridactyl
+    ~/.config/zathura/zathurarc: zathura/zathurarc
     ~/.dir_colors: nord-dircolors/src/dir_colors
     ~/.gitconfig: git/gitconfig
     ~/.gitmessage: git/gitmessage

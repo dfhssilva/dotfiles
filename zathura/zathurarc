@@ -1,0 +1,33 @@
+set sandbox none
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+set selection-clipboard clipboard
+map r reload
+map R rotate
+map K zoom in
+map J zoom out
+map p print
+map g goto top
+
+# Nord theme zathura
+set default-bg                     "#2e3440"
+set default-fg                     "#eceff4"
+set statusbar-bg                   "#2e3440"
+set statusbar-fg                   "#eceff4"
+set inputbar-bg                    "#2e3440"
+set inputbar-fg                    "#eceff4"
+set notification-bg                "#2e3440"
+set notification-fg                "#eceff4"
+set notification-error-bg          "#2e3440"
+set notification-error-fg          "#eceff4"
+set notification-warning-bg        "#2e3440"
+set notification-warning-fg        "#eceff4"
+set highlight-color                "#ebcb8b"
+set highlight-active-color         "#d08770"
+set completion-bg                  "#3b4252"
+set completion-fg                  "#eceff4"
+set completion-highlight-bg        "#ebcb8b"
+set completion-highlight-fg        "#3b4252"
+set recolor-lightcolor             "#434c5e"
+set recolor-darkcolor              "#eceff4"
