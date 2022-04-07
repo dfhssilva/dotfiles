@@ -38,12 +38,13 @@ fi
 
 # desktop
 picom &                                                             # start compositor
+xfce4-power-manager &                                               # power manager
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &         # control system-wide privileges
+eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) # credential manager
+thunar -daemon &                                                    # file manager
 nm-applet --indicator &                                             # wifi
 pnmixer &                                                           # audiocontrol applet in systray
 blueman-applet &                                                    # bluetooth tray icon
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &         # control system-wide privileges
-eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) # credential manager
-xfce4-power-manager &                                               # power manager
 
 # user programs
 vorta --daemonize

@@ -1,0 +1,15 @@
+[Default Applications]
+
+# xdg-open will use these settings to determine how to open filetypes.
+# These .desktop entries can also be seen and changed in ~/.local/share/applications/
+
+text/x-shellscript=org.xfce.mousepad.desktop;
+application/x-bittorrent=org.qbittorrent.qBittorrent.desktop;
+x-scheme-handler/mailto=thunderbird.desktop;
+text/plain=org.xfce.mousepad.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+image/png=org.xfce.ristretto.desktop;
+image/jpeg=org.xfce.ristretto.desktop;
+image/gif=org.xfce.ristretto.desktop;
+video/x-matroska=vlc.desktop
+inode/directory=thunar.desktop

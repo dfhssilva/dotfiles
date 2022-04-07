@@ -17,6 +17,7 @@
     ~/.config/joplin/keymap.json: joplin/keymap.json
     ~/.config/joplin/settings.json: joplin/settings.json
     ~/.config/kitty/kitty.conf: misc/kitty.conf
+    ~/.config/mimeapps.list: misc/mimeapps.list
     ~/.config/nvim: nvim/nvchad
     ~/.config/nvim/lua/custom: nvim/nvcustom
     ~/.config/picom.conf: picom/picom.conf
