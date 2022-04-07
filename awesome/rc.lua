@@ -258,6 +258,11 @@ globalkeys = gears.table.join(
 		os.execute("betterlockscreen --lock")
 	end, { description = "lock screen", group = "hotkeys" }),
 
+	-- betterlockscreen
+	awful.key({ modkey, "Shift" }, "Escape", function()
+		os.execute("systemctl suspend")
+	end, { description = "suspend", group = "hotkeys" }),
+
 	-- Printscreen
 	awful.key({}, "Print", function()
 		awful.util.spawn("gnome-screenshot -i")
