@@ -35,12 +35,13 @@ bindkey '^x' autosuggest-clear  # ctrl + x
 
 # ------------------- User configuration -------------------
 # Activate nord dircolors
-test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
+test -r "${XDG_CONFIG_HOME}/.dir_colors" && eval $(dircolors $XDG_CONFIG_HOME/.dir_colors)
 
 # Aliases
 alias watch-nvidia="watch -n 1 nvidia-smi"
-alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
+alias tlmgr="/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode"
 alias nvidia-settings="nvidia-settings --config=${XDG_CONFIG_HOME}/nvidia/settings"
+alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget-hsts"'
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/dotfiles/bin" ] ; then

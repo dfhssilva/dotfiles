@@ -5,10 +5,12 @@ export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="firefox"
 
-# Clean up:
+# XDG:
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+
+# Clean up:
 export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority" # This line will break some DMs.
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
 export AWS_CONFIG_FILE="${XDG_CONFIG_HOME}/aws/config"
@@ -28,54 +30,20 @@ export PARALLEL_HOME="${XDG_CONFIG_HOME}/parallel"
 export PYLINTHOME="${XDG_CACHE_HOME}/pylint"
 export CONDARC="${XDG_CONFIG_HOME}/conda/condarc"
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}"/java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}/java"
+export ICEAUTHORITY="${XDG_CACHE_HOME}/ICEauthority"
+export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
+export SQLITE_HISTORY="${XDG_DATA_HOME}/sqlite_history"
+export TEXMFHOME="${XDG_DATA_HOME}/texmf"
+export TEXMFVAR="${XDG_CACHE_HOME}/texlive/texmf-var"
+export TEXMFCONFIG="${XDG_CONFIG_HOME}/texlive/texmf-config"
+export WINEPREFIX="${XDG_DATA_HOME}/wineprefixes/default"
+export GOPATH="${XDG_DATA_HOME}/go"
 
-# Set qt theme with kvantum
+# Set qt theme with kvantum:
 export QT_STYLE_OVERRIDE=kvantum
 
-# Startx silent
+# Startx silent:
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startx -- vt1 &> /dev/null
 fi
-
-# # ~/ Clean-up:
-# export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
-# export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
-# export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
-# export LESSHISTFILE="-"
-# export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
-# export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
-# export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-# #export ALSA_CONFIG_PATH="$XDG_CONFIG_HOME/alsa/asoundrc"
-# #export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
-# export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
-# export KODI_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/kodi"
-# export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
-# export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
-# export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
-# export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
-# export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
-# export ANSIBLE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ansible/ansible.cfg"
-# export UNISON="${XDG_DATA_HOME:-$HOME/.local/share}/unison"
-# export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
-# export WEECHAT_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/weechat"
-# export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
-# export ELECTRUMDIR="${XDG_DATA_HOME:-$HOME/.local/share}/electrum"
-#
-# # Other program settings:
-# export DICS="/usr/share/stardict/dic/"
-# export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
-# export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
-# export LESS=-R
-# export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
-# export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
-# export LESS_TERMCAP_me="$(printf '%b' '[0m')"
-# export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
-# export LESS_TERMCAP_se="$(printf '%b' '[0m')"
-# export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
-# export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
-# export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
-# export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
-# export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
-# export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
-# export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
