@@ -4,13 +4,12 @@
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="firefox"
-export TERM="xterm-256color"
 
 # Clean up:
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
+export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority" # This line will break some DMs.
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
 export AWS_CONFIG_FILE="${XDG_CONFIG_HOME}/aws/config"
 export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
@@ -27,6 +26,9 @@ export HISTFILE="${XDG_DATA_HOME}/history"
 export __GL_SHADER_DISK_CACHE_PATH="${XDG_CACHE_HOME}/nv"
 export PARALLEL_HOME="${XDG_CONFIG_HOME}/parallel"
 export PYLINTHOME="${XDG_CACHE_HOME}/pylint"
+export CONDARC="${XDG_CONFIG_HOME}/conda/condarc"
+export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}"/java
 
 # Set qt theme with kvantum
 export QT_STYLE_OVERRIDE=kvantum
