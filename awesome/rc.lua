@@ -15,7 +15,6 @@ local naughty = require("naughty")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Custom scripts
 local xrandr = require("xrandr")
-local battery = require("battery")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -618,14 +617,6 @@ end)
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
--- }}}
-
--- {{{ Timer
--- Set timer to show battery warning
-battimer = timer({ timeout = 120 })
-battimer:connect_signal("timeout", battery.bat_notification)
-battimer:start()
-
 -- }}}
 
 -- Autostart programs
