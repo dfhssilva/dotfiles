@@ -5,6 +5,7 @@
 import sys
 
 from prompt_toolkit.key_binding.vi_state import InputMode, ViState
+from pygments.token import Token
 
 # ------------------------------------------------------------------------------
 # InteractiveShellApp(Configurable) configuration
