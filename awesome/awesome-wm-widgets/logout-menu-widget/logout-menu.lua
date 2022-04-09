@@ -18,7 +18,7 @@ local ICON_DIR = HOME .. "/.config/awesome/awesome-wm-widgets/logout-menu-widget
 local logout_menu_widget = wibox.widget({
 	{
 		{
-			image = ICON_DIR .. "power_w.svg",
+			image = ICON_DIR .. "arch_icon.png",
 			resize = true,
 			widget = wibox.widget.imagebox,
 		},

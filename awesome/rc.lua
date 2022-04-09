@@ -221,13 +221,18 @@ awful.screen.connect_for_each_screen(function(s)
 		layout = wibox.layout.align.horizontal,
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
+			logout_menu_widget({
+				onlock = function()
+					awful.spawn.with_shell("betterlockscreen --lock")
+				end,
+			}),
 			s.mytaglist,
 			s.mypromptbox,
 		},
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-			spacing = 5,
+			spacing = 10,
 			wibox.widget.systray(),
 			weather_widget({
 				api_key = "ef098f6839390b449e7ec95d177bf9f1", -- OpenWeather Free API Key (got get yours at https://openweathermap.org/api)
@@ -244,13 +249,9 @@ awful.screen.connect_for_each_screen(function(s)
 				show_current_level = true,
 				font = "Play 10",
 				battery_backend = "upower",
+				warning_msg_position = "top_right",
 			}),
 			mytextclock,
-			logout_menu_widget({
-				onlock = function()
-					awful.spawn.with_shell("betterlockscreen --lock")
-				end,
-			}),
 			s.mylayoutbox,
 		},
 	})
