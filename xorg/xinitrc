@@ -43,12 +43,11 @@ xfce4-power-manager &                                               # power mana
 eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) # credential manager
 thunar -daemon &                                                    # file manager
 nm-applet --indicator &                                             # wifi
-pnmixer &                                                           # audiocontrol applet in systray
 blueman-applet &                                                    # bluetooth tray icon
 
 # user programs
 vorta --daemonize
-protonmail-bridge --no-window &
+protonmail-bridge --noninteractive &
 
 # window manager
 /usr/bin/prime-offload     # prime-offload (nvidia gpu)

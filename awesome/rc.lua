@@ -13,7 +13,13 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
 -- Custom scripts
+local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+local weather_widget = require("awesome-wm-widgets.weather-widget.weather")
 local xrandr = require("xrandr")
 
 -- {{{ Error handling
@@ -72,41 +78,18 @@ awful.layout.layouts = {
 }
 -- }}}
 
--- {{{ Menu
--- Create a launcher widget and a main menu
-local myawesomemenu = {
-	{
-		"Hotkeys",
-		function()
-			hotkeys_popup.show_help(nil, awful.screen.focused())
-		end,
-	},
-	{ "Manual", string.format("%s -e man awesome", terminal) },
-	{ "Edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
-	{ "Restart", awesome.restart },
-	{
-		"Quit",
-		function()
-			awesome.quit()
-		end,
-	},
-}
-
-local mymainmenu = awful.menu({
-	items = {
-		{ "Awesome", myawesomemenu, beautiful.awesome_icon },
-		{ "Open terminal", terminal },
-	},
-})
-
-local mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
-
--- Keyboard map indicator and switcher
-local mykeyboardlayout = awful.widget.keyboardlayout()
-
 -- {{{ Wibar
 -- Create a textclock widget
-local mytextclock = wibox.widget.textclock()
+local mytextclock = wibox.widget.textclock(" %b %d, %I:%M ")
+local cw = calendar_widget({
+	theme = "nord",
+	placement = "top_right",
+})
+mytextclock:connect_signal("button::press", function(_, _, _, button)
+	if button == 1 then
+		cw.toggle()
+	end
+end)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -204,6 +187,30 @@ awful.screen.connect_for_each_screen(function(s)
 		screen = s,
 		filter = awful.widget.tasklist.filter.currenttags,
 		buttons = tasklist_buttons,
+		widget_template = {
+			{
+				{
+					{
+						{
+							id = "icon_role",
+							widget = wibox.widget.imagebox,
+						},
+						margins = 3,
+						widget = wibox.container.margin,
+					},
+					{
+						id = "text_role",
+						widget = wibox.widget.textbox,
+					},
+					layout = wibox.layout.fixed.horizontal,
+				},
+				left = 10,
+				right = 10,
+				widget = wibox.container.margin,
+			},
+			id = "background_role",
+			widget = wibox.container.background,
+		},
 	})
 
 	-- Create the wibox
@@ -214,7 +221,6 @@ awful.screen.connect_for_each_screen(function(s)
 		layout = wibox.layout.align.horizontal,
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
-			mylauncher,
 			s.mytaglist,
 			s.mypromptbox,
 		},
@@ -222,19 +228,33 @@ awful.screen.connect_for_each_screen(function(s)
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			spacing = 5,
-			mykeyboardlayout,
 			wibox.widget.systray(),
+			weather_widget({
+				api_key = "ef098f6839390b449e7ec95d177bf9f1", -- OpenWeather Free API Key
+				coordinates = { 38.7437396, -9.2302429 }, -- Lisbon
+				units = "metric",
+				show_hourly_forecast = true,
+				show_daily_forecast = true,
+				timeout = 1800,
+			}),
+			volume_widget({
+				widget_type = "icon",
+			}),
+			battery_widget({
+				show_current_level = true,
+				font = "Play 10",
+				battery_backend = "upower",
+			}),
 			mytextclock,
+			logout_menu_widget({
+				onlock = function()
+					awful.spawn.with_shell("betterlockscreen --lock")
+				end,
+			}),
 			s.mylayoutbox,
 		},
 	})
 end)
--- }}}
-
--- {{{ Mouse bindings
-root.buttons(gears.table.join(awful.button({}, 3, function()
-	mymainmenu:toggle()
-end)))
 -- }}}
 
 -- {{{ Key bindings
@@ -278,11 +298,6 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "k", function()
 		awful.client.focus.byidx(-1)
 	end, { description = "focus previous by index", group = "client" }),
-
-	-- Menu
-	awful.key({ modkey }, "w", function()
-		mymainmenu:show()
-	end, { description = "show main menu", group = "awesome" }),
 
 	-- Layout manipulation
 	awful.key({ modkey, "Shift" }, "j", function()
@@ -542,7 +557,7 @@ awful.rules.rules = {
 		properties = { floating = true },
 	},
 
-	-- Add titlebars to normal clients and dialogs
+	-- Remove titlebars from normal clients and dialogs
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
 
 	-- Set Thunderbird to always map on the tag named "2" on screen 2.
@@ -564,46 +579,6 @@ client.connect_signal("manage", function(c)
 		-- Prevent clients from being unreachable after screen count changes.
 		awful.placement.no_offscreen(c)
 	end
-end)
-
--- Add a titlebar if titlebars_enabled is set to true in the rules.
-client.connect_signal("request::titlebars", function(c)
-	-- buttons for the titlebar
-	local buttons = gears.table.join(
-		awful.button({}, 1, function()
-			c:emit_signal("request::activate", "titlebar", { raise = true })
-			awful.mouse.client.move(c)
-		end),
-		awful.button({}, 3, function()
-			c:emit_signal("request::activate", "titlebar", { raise = true })
-			awful.mouse.client.resize(c)
-		end)
-	)
-
-	awful.titlebar(c):setup({
-		{ -- Left
-			awful.titlebar.widget.iconwidget(c),
-			buttons = buttons,
-			layout = wibox.layout.fixed.horizontal,
-		},
-		{ -- Middle
-			{ -- Title
-				align = "center",
-				widget = awful.titlebar.widget.titlewidget(c),
-			},
-			buttons = buttons,
-			layout = wibox.layout.flex.horizontal,
-		},
-		{ -- Right
-			awful.titlebar.widget.floatingbutton(c),
-			awful.titlebar.widget.maximizedbutton(c),
-			awful.titlebar.widget.stickybutton(c),
-			awful.titlebar.widget.ontopbutton(c),
-			awful.titlebar.widget.closebutton(c),
-			layout = wibox.layout.fixed.horizontal(),
-		},
-		layout = wibox.layout.align.horizontal,
-	})
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
