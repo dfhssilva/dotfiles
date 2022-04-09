@@ -230,7 +230,7 @@ awful.screen.connect_for_each_screen(function(s)
 			spacing = 5,
 			wibox.widget.systray(),
 			weather_widget({
-				api_key = "ef098f6839390b449e7ec95d177bf9f1", -- OpenWeather Free API Key
+				api_key = "ef098f6839390b449e7ec95d177bf9f1", -- OpenWeather Free API Key (got get yours at https://openweathermap.org/api)
 				coordinates = { 38.7437396, -9.2302429 }, -- Lisbon
 				units = "metric",
 				show_hourly_forecast = true,
