@@ -35,7 +35,7 @@ theme.font = "Roboto 10"
 theme.transparent = "#00000000"
 
 theme.bg_normal = theme.nord0
-theme.bg_focus = theme.bg_normal
+theme.bg_focus = theme.nord1
 theme.bg_urgent = theme.bg_normal
 theme.bg_minimize = theme.nord2
 theme.bg_systray = theme.bg_normal
