@@ -1,5 +1,6 @@
 adwaita-qt
 alsa-utils
+arc-icon-theme
 autoconf
 automake
 awesome
@@ -14,7 +15,6 @@ bluez-utils
 borg
 brave-bin
 docker
-evince
 extra-cmake-modules
 fakeroot
 file-roller
@@ -26,6 +26,7 @@ gimp
 git
 gnome-disk-utility
 gnome-keyring
+gnome-screenshot
 htop-vim
 ifplugd
 informant
@@ -45,7 +46,6 @@ m4
 make
 man-db
 man-pages
-mousepad
 neofetch
 neovim
 neovim-symlinks
@@ -69,7 +69,6 @@ patch
 picom
 pkgconf
 playerctl
-pnmixer-gtk3
 powertop
 proselint
 protonmail-bridge
@@ -78,6 +77,7 @@ pulseaudio-bluetooth
 python-black
 python-isort
 python-pympress
+qbittorrent
 rebuild-detector
 reflector
 ristretto
@@ -126,9 +126,7 @@ xcursor-simp1e-nord-dark
 xdotool
 xf86-video-intel
 xf86-video-vesa
-xfburn
 xfce4-power-manager
-xfce4-screenshooter
 xorg-bdftopcf
 xorg-docs
 xorg-font-util
@@ -176,6 +174,9 @@ xorg-xwayland
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
+xterm
+zathura
+zathura-pdf-mupdf
 zip
 zoom
 zotero
