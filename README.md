@@ -10,6 +10,7 @@ After cloning this repo, run `install` to automatically set up the development e
 External projects are integrated with git submodules. To upgrade submodules to their latest versions, you can periodically run `git submodule update --init --remote --merge` (merges submodule changes into the superproject). 
 
 # AwesomeWM desktop
+![AwesomeWM desktop](./misc/awesome_desktop.png)
 
 ## System dependencies:
 - Check the `pacman-pkglist.txt` file in the misc folder.
