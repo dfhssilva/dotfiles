@@ -4,7 +4,6 @@ channels:
   - conda-forge
 create_default_packages:
   - python
-  - pip
   - scipy
   - numpy
   - matplotlib
