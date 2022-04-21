@@ -23,15 +23,16 @@
     ~/.config/oh-my-zsh/custom/plugins:
       force: true
       path: zsh/plugins
-    ~/.config/tmux/tmux.conf: tmux/tmux.conf
-    ~/.config/tmux/plugins: tmux/plugins
-    ~/.config/tmux/themes: tmux/themes
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux/plugins: tmux/plugins
+    ~/.tmux/themes: tmux/themes
     ~/.config/vifm/vifmrc: misc/vifmrc
     ~/.config/zsh/.zshrc: zsh/zshrc
     ~/.zprofile: zsh/zprofile
 
 - shell:
   - [git submodule update --init --recursive, Install submodules]
+  - [tmux source-file ~/.tmux.conf, Reload Tmux environment]
   - [nvim +'hi NormalFloat guibg=#1e222a' +PackerSync &, Install nvchad and plugins]
   - [pip install jupyterlab-vim, Install jupyterlab-vim user-wide]
   - [pip install "https://github.com/sbrisard/nord_pygments/archive/refs/tags/v0.1.zip", Install pygments nord style]
