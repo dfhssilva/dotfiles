@@ -562,7 +562,7 @@ awful.rules.rules = {
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
 
 	-- Set Thunderbird to always map on the tag named "2" on screen 2.
-	{ rule = { class = "Thunderbird" }, properties = { screen = 2, tag = "2" } },
+	-- { rule = { class = "Thunderbird" }, properties = { screen = 1, tag = "2" } },
 
 	-- Set Spotify to always map on the tag named "2" on screen 1.
 	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = "2" } },
