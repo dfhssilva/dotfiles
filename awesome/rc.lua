@@ -15,12 +15,13 @@ local naughty = require("naughty")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Custom scripts
-local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
-local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
-local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
-local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
-local weather_widget = require("awesome-wm-widgets.weather-widget.weather")
-local xrandr = require("xrandr")
+local logout_menu_widget = require("modules.logout-menu-widget.logout-menu")
+local calendar_widget = require("modules.calendar-widget.calendar")
+local battery_widget = require("modules.battery-widget.battery")
+local volume_widget = require("modules.volume-widget.volume")
+local weather_widget = require("modules.weather-widget.weather")
+local pomodoro_widget = require("modules.pomodoro-widget.pomodoroarc")
+local xrandr = require("modules.xrandr")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -234,6 +235,7 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.fixed.horizontal,
 			spacing = 8,
 			wibox.widget.systray(),
+			pomodoro_widget,
 			weather_widget({
 				api_key = "ef098f6839390b449e7ec95d177bf9f1", -- OpenWeather Free API Key (got get yours at https://openweathermap.org/api)
 				coordinates = { 38.7437396, -9.2302429 }, -- Lisbon
