@@ -132,8 +132,8 @@ local function worker(user_args)
 			timeout = 25, -- show the warning for a longer time
 			hover_timeout = 0.5,
 			position = warning_msg_position,
-			bg = "#F06060",
-			fg = "#EEE9EF",
+			bg = "#BF616A",
+			fg = "#D8DEE9",
 			width = 300,
 			screen = mouse.screen,
 		})
@@ -282,7 +282,7 @@ local function worker(user_args)
 		end)
 	elseif display_notification_onClick then
 		battery_widget:connect_signal("button::press", function(_, _, _, button)
-			if button == 3 then
+			if button == 1 then
 				show_battery_status(batteryType)
 			end
 		end)

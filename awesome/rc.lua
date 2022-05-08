@@ -235,7 +235,9 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.fixed.horizontal,
 			spacing = 8,
 			wibox.widget.systray(),
-			pomodoro_widget,
+			pomodoro_widget({
+				warning_msg_position = "top_right",
+			}),
 			weather_widget({
 				api_key = "ef098f6839390b449e7ec95d177bf9f1", -- OpenWeather Free API Key (got get yours at https://openweathermap.org/api)
 				coordinates = { 38.7437396, -9.2302429 }, -- Lisbon

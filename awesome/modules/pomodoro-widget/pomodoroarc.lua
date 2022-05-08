@@ -1,11 +1,9 @@
 -------------------------------------------------
--- Pomodoro Arc Widget for Awesome Window Manager
--- Modelled after Pavel Makhov's work
+-- Pomodoro Widget for Awesome Window Manager
+-- Shows the pomodoro timer status, begin, pause and stop sessions
 
--- @author Raphaël Fournier-S'niehotta
--- @copyright 2018 Raphaël Fournier-S'niehotta
+-- @author David Silva
 -------------------------------------------------
-
 local awful = require("awful")
 local beautiful = require("beautiful")
 local spawn = require("awful.spawn")
@@ -14,130 +12,178 @@ local wibox = require("wibox")
 local naughty = require("naughty")
 
 local HOME_DIR = os.getenv("HOME")
-local WIDGET_DIR = HOME_DIR .. "/.config/awesome/modules/pomodoro-widget"
-local GET_pomodoro_CMD = WIDGET_DIR .. "/pomo clock"
-local PAUSE_pomodoro_CMD = WIDGET_DIR .. "/pomo pause"
-local START_pomodoro_CMD = WIDGET_DIR .. "/pomo start"
-local STOP_pomodoro_CMD = WIDGET_DIR .. "/pomo stop"
+local WIDGET_DIR = HOME_DIR .. "/.config/awesome/modules/pomodoro-widget/"
+local GET_pomodoro_CMD = WIDGET_DIR .. "pomo clock"
+local PAUSE_pomodoro_CMD = WIDGET_DIR .. "pomo pause"
+local START_pomodoro_CMD = WIDGET_DIR .. "pomo start"
+local STOP_pomodoro_CMD = WIDGET_DIR .. "pomo stop"
 
-local text = wibox.widget({
-	id = "txt",
-	--font = "Play 12",
-	font = "Inconsolata Medium 13",
-	widget = wibox.widget.textbox,
-})
--- mirror the text, because the whole widget will be mirrored after
-local mirrored_text = wibox.container.margin(wibox.container.mirror(text, { horizontal = true }))
-mirrored_text.right = 5 -- pour centrer le texte dans le rond
---
---local mirrored_text = wibox.container.mirror(text, { horizontal = true })
+local pomoarc_widget = {}
 
--- mirrored text with background
-local mirrored_text_with_background = wibox.container.background(mirrored_text)
+local function worker(user_args)
+	local args = user_args or {}
 
-local pomodoroarc = wibox.widget({
-	mirrored_text_with_background,
-	max_value = 1,
-	thickness = 2,
-	start_angle = 4.71238898, -- 2pi*3/4
-	forced_height = 22,
-	forced_width = 22,
-	rounded_edge = true,
-	bg = "#ffffff11",
-	paddings = 0,
-	widget = wibox.container.arcchart,
-})
+	local font = args.font or "Play 6"
+	local arc_thickness = args.arc_thickness or 2
+	local size = args.size or 20
+	local show_notification_on_hover = args.show_notification_on_hover or true
+	local notification_position = args.notification_position or "top_right" -- see naughty.notify position argument
 
-local pomodoroarc_widget = wibox.container.mirror(pomodoroarc, { horizontal = true })
+	local main_color = args.main_color or beautiful.fg_color
+	local bg_color = args.bg_color or "#ffffff11"
+	local last5_color = args.last5_color or "#BF616A"
+	local last15_color = args.last15_color or "#EBCB8B"
+	local break_color = args.break_color or "#A3BE8C"
+	local pause_color = args.pause_color or "#81A1C1"
 
-local update_graphic = function(widget, stdout, _, _, _)
-	local pomostatus = string.match(stdout, "  (%D?%D?):%D?%D?")
-	if pomostatus == "--" then
-		text.font = "Inconsolata Medium 13"
-		widget.colors = { beautiful.widget_main_color }
-		text.text = "25"
-		widget.value = 1
-	else
-		text.font = "Inconsolata Medium 13"
-		local pomomin = string.match(stdout, "[ P]?[BW](%d?%d?):%d?%d?")
-		local pomosec = string.match(stdout, "[ P]?[BW]%d?%d?:(%d?%d?)")
-		local pomodoro = pomomin * 60 + pomosec
+	local warning_msg_title = args.warning_msg_title or "Pomodoro break time!"
+	local warning_msg_text = args.warning_msg_text or "Take a small break from work."
+	local warning_msg_position = args.warning_msg_position or "bottom_right"
+	local warning_msg_icon = args.warning_msg_icon or WIDGET_DIR .. "/spaceman.jpg"
+	local enable_battery_warning = args.enable_battery_warning
+	if enable_battery_warning == nil then
+		enable_battery_warning = true
+	end
 
-		local status = string.match(stdout, "([ P]?)[BW]%d?%d?:%d?%d?")
-		local workbreak = string.match(stdout, "[ P]?([BW])%d?%d?:%d?%d?")
-		text.text = pomomin
+	local text = wibox.widget({
+		font = font,
+		align = "center",
+		valign = "center",
+		widget = wibox.widget.textbox,
+	})
 
-		--    Helps debugging
-		--naughty.notify {
-		--text = pomomin,
-		--title = "pomodoro debug",
-		--timeout = 5,
-		--hover_timeout = 0.5,
-		--width = 200,
-		--}
+	local text_with_background = wibox.container.background(text)
 
-		if status == " " then -- clock ticking
-			if workbreak == "W" then
-				widget.value = tonumber(pomodoro / (25 * 60))
-				if tonumber(pomomin) < 5 then -- last 5 min of pomo
-					widget.colors = { beautiful.widget_red }
-				else
-					widget.colors = { beautiful.widget_blue }
+	pomoarc_widget = wibox.widget({
+		text_with_background,
+		max_value = 1,
+		rounded_edge = true,
+		thickness = arc_thickness,
+		start_angle = 4.71238898, -- 2pi*3/4
+		forced_height = size,
+		forced_width = size,
+		bg = bg_color,
+		paddings = 2,
+		widget = wibox.container.arcchart,
+	})
+
+	local last_pomodoro_check = os.time()
+
+	local function show_pomodoro_break_warning()
+		naughty.notify({
+			icon = warning_msg_icon,
+			icon_size = 100,
+			text = warning_msg_text,
+			title = warning_msg_title,
+			timeout = 25, -- show the warning for a longer time
+			hover_timeout = 0.5,
+			position = warning_msg_position,
+			bg = "#BF616A",
+			fg = "#D8DEE9",
+			width = 300,
+		})
+	end
+
+	local update_widget = function(widget, stdout, _, _, _)
+		local pomostatus = string.match(stdout, "  (%D?%D?):%D?%D?")
+
+		if pomostatus == "--" then
+			widget.colors = { main_color }
+			text.text = "25"
+			widget.value = 1
+		else
+			local pomomin = string.match(stdout, "[ P]?[BW](%d?%d?):%d?%d?")
+			local pomosec = string.match(stdout, "[ P]?[BW]%d?%d?:(%d?%d?)")
+			local pomodoro = pomomin * 60 + pomosec
+
+			local status = string.match(stdout, "([ P]?)[BW]%d?%d?:%d?%d?")
+			local workbreak = string.match(stdout, "[ P]?([BW])%d?%d?:%d?%d?")
+			text.text = pomomin
+
+			if status == " " then -- clock ticking
+				if workbreak == "W" then
+					widget.value = tonumber(pomodoro / (25 * 60))
+					if tonumber(pomomin) < 5 then -- last 5 min of pomo
+						widget.colors = { last5_color }
+					elseif tonumber(pomomin) < 15 then -- last 15 min of pomo
+						widget.colors = { last15_color }
+					else
+						widget.colors = { main_color }
+					end
+				elseif workbreak == "B" then -- color during break
+					if enable_battery_warning and os.difftime(os.time(), last_pomodoro_check) >= 1500 then
+						-- if 25 minutes or more have elapsed since the last warning
+						last_pomodoro_check = os.time()
+						show_pomodoro_break_warning()
+					end
+					widget.colors = { break_color }
+					widget.value = tonumber(pomodoro / (5 * 60))
 				end
-			elseif workbreak == "B" then -- color during pause
-				widget.colors = { beautiful.widget_green }
-				widget.value = tonumber(pomodoro / (5 * 60))
-			end
-		elseif status == "P" then -- paused
-			if workbreak == "W" then
-				widget.colors = { beautiful.widget_yellow }
-				widget.value = tonumber(pomodoro / (25 * 60))
-				text.font = "Inconsolata Medium 13"
-				text.text = "PW"
-			elseif workbreak == "B" then
-				widget.colors = { beautiful.widget_yellow }
-				widget.value = tonumber(pomodoro / (5 * 60))
-				text.font = "Inconsolata Medium 13"
-				text.text = "PB"
+			elseif status == "P" then -- paused
+				if workbreak == "W" then
+					widget.colors = { pause_color }
+					widget.value = tonumber(pomodoro / (25 * 60))
+					text.text = "PW"
+				elseif workbreak == "B" then
+					widget.colors = { pause_color }
+					widget.value = tonumber(pomodoro / (5 * 60))
+					text.text = "PB"
+				end
 			end
 		end
 	end
-end
 
-pomodoroarc:connect_signal("button::press", function(_, _, _, button)
-	if button == 2 then
-		awful.spawn(PAUSE_pomodoro_CMD, false)
-	elseif button == 1 then
-		awful.spawn(START_pomodoro_CMD, false)
-	elseif button == 3 then
-		awful.spawn(STOP_pomodoro_CMD, false)
+	watch(GET_pomodoro_CMD, 1, update_widget, pomoarc_widget)
+
+	-- Popup with battery info
+	local notification
+	local function show_pomodoro_status()
+		spawn.easy_async(GET_pomodoro_CMD, function(stdout, _, _, _)
+			naughty.destroy(notification)
+			notification = naughty.notify({
+				text = stdout,
+				title = "Pomodoro Status",
+				timeout = 5,
+				width = 200,
+				position = notification_position,
+			})
+		end)
 	end
 
-	spawn.easy_async(GET_pomodoro_CMD, function(stdout, stderr, exitreason, exitcode)
-		update_graphic(pomodoroarc, stdout, stderr, exitreason, exitcode)
-	end)
-end)
+	if show_notification_on_hover then
+		pomoarc_widget:connect_signal("mouse::enter", function()
+			show_pomodoro_status()
+		end)
+		pomoarc_widget:connect_signal("mouse::leave", function()
+			naughty.destroy(notification)
+		end)
+	end
 
-local notification
-local function show_pomodoro_status()
-	spawn.easy_async(GET_pomodoro_CMD, function(stdout, _, _, _)
-		notification = naughty.notify({
-			text = stdout,
-			title = "pomodoro status",
-			timeout = 5,
-			hover_timeout = 0.5,
-			width = 200,
-		})
+	-- Button actions (Start, Stop, Pause)
+	local start_stop_status = "stop"
+	pomoarc_widget:connect_signal("button::press", function(_, _, _, button)
+		if button == 1 then
+			if start_stop_status == "start" then
+				start_stop_status = "stop"
+				awful.spawn(STOP_pomodoro_CMD, false)
+			else
+				start_stop_status = "start"
+				awful.spawn(START_pomodoro_CMD, false)
+			end
+		elseif button == 3 then
+			awful.spawn(PAUSE_pomodoro_CMD, false)
+		end
+
+		spawn.easy_async(GET_pomodoro_CMD, function(stdout, stderr, exitreason, exitcode)
+			update_widget(pomoarc_widget, stdout, stderr, exitreason, exitcode)
+		end)
 	end)
+
+	return pomoarc_widget
 end
 
-pomodoroarc:connect_signal("mouse::enter", function()
-	show_pomodoro_status()
-end)
-pomodoroarc:connect_signal("mouse::leave", function()
-	naughty.destroy(notification)
-end)
-
-watch(GET_pomodoro_CMD, 1, update_graphic, pomodoroarc)
-
-return pomodoroarc_widget
+return setmetatable(pomoarc_widget, {
+	__call = function(_, ...)
+		return worker(...)
+	end,
+})
