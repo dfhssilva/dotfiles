@@ -15,6 +15,7 @@ M.plugins = {
 	},
 	override = {
 		["goolord/alpha-nvim"] = overridePlugins.alpha,
+		["akinsho/bufferline.nvim"] = overridePlugins.bufferline,
 	},
 }
 
