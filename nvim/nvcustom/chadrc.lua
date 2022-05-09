@@ -3,6 +3,11 @@ local M = {}
 local overridePlugins = require("custom.plugins.overrides")
 local userPlugins = require("custom.plugins")
 
+local delmap = function(mode, keys, opts)
+  vim.keymap.del(mode, keys, opts)
+end
+
+
 M.plugins = {
 	user = userPlugins,
 	options = {
@@ -14,7 +19,8 @@ M.plugins = {
 		separator_style = "arrow",
 	},
 	override = {
-		["goolord/alpha-nvim"] = overridePlugins.alpha,
+	 		["akinsho/bufferline.nvim"] = overridePlugins.bufferline,
+                        ["goolord/alpha-nvim"] = overridePlugins.alpha,
 	},
 }
 
@@ -26,7 +32,8 @@ M.mappings = {
 	misc = function()
 		local map = require("core.utils").map
 
-		-- get out of terminal mode
+		-- override terminal mappings
+                delmap("t", "jk")
 		map("t", { "JK" }, "<C-\\><C-n>")
 
 		-- toggle comments

@@ -18,5 +18,5 @@ return {
 		end,
 	},
 	-- tmux_navigator.vim: Seamless navigation between tmux panes and vim splits
-	-- ["christoomey/vim-tmux-navigator"] = {},
+	["christoomey/vim-tmux-navigator"] = {},
 }
