@@ -37,4 +37,5 @@
 [submodule "zsh/plugins/pure"]
 	path = zsh/plugins/pure
 	url = https://github.com/sindresorhus/pure.git
+        branch=main
         shallow = True
