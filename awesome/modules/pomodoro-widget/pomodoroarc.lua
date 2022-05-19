@@ -34,7 +34,7 @@ local function worker(user_args)
 	local last5_color = args.last5_color or "#BF616A"
 	local last15_color = args.last15_color or "#EBCB8B"
 	local break_color = args.break_color or "#A3BE8C"
-	local pause_color = args.pause_color or "#81A1C1"
+	local start_color = args.start_color or "#81A1C1"
 
 	local warning_msg_title = args.warning_msg_title or "Pomodoro break time!"
 	local warning_msg_text = args.warning_msg_text or "Take a small break from work."
@@ -81,6 +81,7 @@ local function worker(user_args)
 			bg = "#BF616A",
 			fg = "#D8DEE9",
 			width = 300,
+			screen = mouse.screen,
 		})
 	end
 
@@ -108,7 +109,7 @@ local function worker(user_args)
 					elseif tonumber(pomomin) < 15 then -- last 15 min of pomo
 						widget.colors = { last15_color }
 					else
-						widget.colors = { main_color }
+						widget.colors = { start_color }
 					end
 				elseif workbreak == "B" then -- color during break
 					if enable_battery_warning and os.difftime(os.time(), last_pomodoro_check) >= 1500 then
@@ -121,11 +122,11 @@ local function worker(user_args)
 				end
 			elseif status == "P" then -- paused
 				if workbreak == "W" then
-					widget.colors = { pause_color }
+					widget.colors = { main_color }
 					widget.value = tonumber(pomodoro / (25 * 60))
 					text.text = "PW"
 				elseif workbreak == "B" then
-					widget.colors = { pause_color }
+					widget.colors = { main_color }
 					widget.value = tonumber(pomodoro / (5 * 60))
 					text.text = "PB"
 				end
@@ -160,18 +161,12 @@ local function worker(user_args)
 	end
 
 	-- Button actions (Start, Stop, Pause)
-	local start_stop_status = "stop"
 	pomoarc_widget:connect_signal("button::press", function(_, _, _, button)
 		if button == 1 then
-			if start_stop_status == "start" then
-				start_stop_status = "stop"
-				awful.spawn(STOP_pomodoro_CMD, false)
-			else
-				start_stop_status = "start"
-				awful.spawn(START_pomodoro_CMD, false)
-			end
-		elseif button == 3 then
+			-- Pause will Start if the clock is not started
 			awful.spawn(PAUSE_pomodoro_CMD, false)
+		elseif button == 3 then
+			awful.spawn(STOP_pomodoro_CMD, false)
 		end
 
 		spawn.easy_async(GET_pomodoro_CMD, function(stdout, stderr, exitreason, exitcode)
