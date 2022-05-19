@@ -17,7 +17,6 @@ local sources = {
 	-- Python
 	b.formatting.isort,
 	b.formatting.black,
-	b.diagnostics.pydocstyle,
 }
 
 local M = {}
