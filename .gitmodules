@@ -37,3 +37,6 @@
 	path = firefox/firefox-nordic-theme
 	url = https://github.com/EliverLara/firefox-nordic-theme.git
         shallow = True
+[submodule "nvim/nvchad"]
+	path = nvim/nvchad
+	url = https://github.com/NvChad/NvChad.git
