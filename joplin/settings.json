@@ -4,12 +4,38 @@
 	"locale": "en_US",
 	"timeFormat": "HH:mm",
 	"sync.target": 5,
-	"sync.5.path": "https://dsilvacloud.ddns.net/nextcloud/remote.php/webdav/Joplin",
-	"sync.5.username": "dsilva",
+	"sync.5.path": "https://nextcloud.dfhssilva.xyz/remote.php/webdav/Joplin",
+	"sync.5.username": "dfhssilva",
 	"notes.sortOrder.field": "user_updated_time",
 	"notes.sortOrder.reverse": true,
 	"folders.sortOrder.field": "title",
 	"folders.sortOrder.reverse": false,
 	"net.ignoreTlsErrors": false,
-	"editor": "vim"
+	"editor": "nvim",
+	"spellChecker.language": "en-US",
+	"ui.layout": {
+		"key": "root",
+		"children": [
+			{
+				"key": "sideBar",
+				"width": 266,
+				"visible": true
+			},
+			{
+				"key": "noteList",
+				"width": 446,
+				"visible": true
+			},
+			{
+				"key": "editor",
+				"visible": true
+			}
+		],
+		"visible": true
+	},
+	"noteVisiblePanes": [
+		"editor"
+	],
+	"theme": 6,
+	"editor.keyboardMode": "vim"
 }
