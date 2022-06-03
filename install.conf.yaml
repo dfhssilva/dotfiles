@@ -15,8 +15,6 @@
     ~/.config/htop/htoprc: misc/htoprc
     ~/.ipython/profile_default/ipython_config.py: ipython/ipython_config.py
     ~/.ipython/profile_default/ipython_kernel_config.py: ipython/ipython_kernel_config.py
-    ~/.config/joplin/keymap.json: joplin/keymap.json
-    ~/.config/joplin/settings.json: joplin/settings.json
     ~/.config/nvim: nvim/nvchad
     ~/.config/nvim/lua/custom: nvim/nvcustom
     ~/.config/oh-my-zsh: zsh/ohmyzsh
@@ -24,8 +22,8 @@
       force: true
       path: zsh/plugins
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.tmux/plugins: tmux/plugins
-    ~/.tmux/themes: tmux/themes
+    ~/.config/tmux/plugins: tmux/plugins
+    ~/.config/tmux/themes: tmux/themes
     ~/.config/vifm/vifmrc: misc/vifmrc
     ~/.config/zsh/.zshrc: zsh/zshrc
     ~/.zprofile: zsh/zprofile
@@ -34,5 +32,4 @@
   - [git submodule update --init --recursive, Install submodules]
   - [tmux source-file ~/.tmux.conf, Reload Tmux environment]
   - [nvim +'hi NormalFloat guibg=#1e222a' +PackerSync &, Install nvchad and plugins]
-  - [pip install jupyterlab-vim, Install jupyterlab-vim user-wide]
   - [pip install "https://github.com/sbrisard/nord_pygments/archive/refs/tags/v0.1.zip", Install pygments nord style]
