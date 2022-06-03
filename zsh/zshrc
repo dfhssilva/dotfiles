@@ -41,7 +41,6 @@ test -r "${XDG_CONFIG_HOME}/.dir_colors" && eval $(dircolors $XDG_CONFIG_HOME/.d
 # Aliases
 alias watch-nvidia="watch -n 1 nvidia-smi"
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
-alias vim='nvim.appimage'
 alias xpl='explorer.exe'
 alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget-hsts"'
 

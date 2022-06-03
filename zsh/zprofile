@@ -1,9 +1,8 @@
 # profile file. Runs on login. Environmental variables are set here.
 #
 # Set env variables
-export EDITOR="$HOME/bin/nvim.appimage"
-export WH="/mnt/c/Users/dsilva"
-export GOOGLE_APPLICATION_CREDENTIALS="$HOME/gcloud_keys.json"
+export EDITOR="vim"
+export WH="/mnt/c/Users/z004k6dk"
 
 # XDG:
 export XDG_CONFIG_HOME="$HOME/.config"
