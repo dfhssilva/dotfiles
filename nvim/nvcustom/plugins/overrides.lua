@@ -18,10 +18,4 @@ M.alpha = {
 	},
 }
 
-M.bufferline = {
-	options = {
-		custom_areas = false,
-	},
-}
-
 return M

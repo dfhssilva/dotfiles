@@ -10,9 +10,6 @@ M.plugins = {
 			setup_lspconf = "custom.plugins.lspconfig",
 		},
 	},
-	statusline = {
-		separator_style = "arrow",
-	},
 	override = {
 		["goolord/alpha-nvim"] = overridePlugins.alpha,
 		["akinsho/bufferline.nvim"] = overridePlugins.bufferline,
@@ -21,8 +18,9 @@ M.plugins = {
 
 M.ui = {
 	theme = "onenord",
+	theme_toggle = { "onenord", "onenord_light" },
 }
 
-M.mappings = require "custom.mappings"
+M.mappings = require("custom.mappings")
 
 return M
