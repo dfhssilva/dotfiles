@@ -1,6 +1,7 @@
-adwaita-qt
+adwaita-qt5
 alsa-utils
 arc-icon-theme
+audacity
 autoconf
 automake
 awesome
@@ -14,7 +15,10 @@ blueman
 bluez-utils
 borg
 brave-bin
+ctop
 docker
+eksctl
+ethtool
 extra-cmake-modules
 fakeroot
 file-roller
@@ -32,8 +36,10 @@ ifplugd
 informant
 intel-ucode
 jitsi-meet-desktop
-joplin
+kdenlive
 kitty
+kompose
+kubectl
 kvantum
 lib32-fontconfig
 libreoffice-fresh
@@ -42,10 +48,13 @@ linux-firmware
 linux-lts
 lutris
 lvm2
+lxrandr-gtk3
 m4
 make
 man-db
 man-pages
+minikube
+mousepad
 neofetch
 neovim
 neovim-symlinks
@@ -57,6 +66,7 @@ nordic-darker-standard-buttons-theme
 ntfs-3g
 nvidia
 nvidia-container-toolkit
+nvidia-settings
 nvim-packer-git
 obs-studio
 openssh
@@ -69,6 +79,7 @@ patch
 picom
 pkgconf
 playerctl
+popsicle-git
 powertop
 proselint
 protonmail-bridge
@@ -78,6 +89,7 @@ python-black
 python-isort
 python-pympress
 qbittorrent
+qownnotes
 rebuild-detector
 reflector
 ristretto
@@ -103,13 +115,13 @@ thunar
 thunar-archive-plugin
 thunar-media-tags-plugin
 thunar-volman
-thunderbird
-thunderbird-dark-reader
+thunderbird-bin
 timeshift
 timeshift-autosnap
 tlp
 tmux
 ttf-liberation
+ttf-ms-win11-auto
 ttf-roboto
 ufw
 unrar
@@ -118,7 +130,6 @@ virtualbox
 virtualbox-host-modules-arch
 vlc
 vorta
-wat-git
 wget
 wine
 xclip
@@ -174,10 +185,9 @@ xorg-xwayland
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
-xterm
 zathura
 zathura-pdf-mupdf
 zip
 zoom
-zotero
+zotero-bin
 zsh
