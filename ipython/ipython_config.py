@@ -5,7 +5,6 @@
 import sys
 
 from prompt_toolkit.key_binding.vi_state import InputMode, ViState
-from pygments.token import Token
 
 # ------------------------------------------------------------------------------
 # InteractiveShellApp(Configurable) configuration
@@ -632,16 +631,16 @@ c.TerminalInteractiveShell.editing_mode = "vi"
 ## The name or class of a Pygments style to use for syntax
 #          highlighting. To see available styles, run `pygmentize -L styles`.
 #  Default: traitlets.Undefined
-c.TerminalInteractiveShell.highlighting_style = "nord"
+# c.TerminalInteractiveShell.highlighting_style = "nord"
 
 ## Override highlighting format for specific tokens
 #  Default: {}
-c.TerminalInteractiveShell.highlighting_style_overrides = {
-    Token.Prompt: "#A3BE8C",
-    Token.PromptNum: "#BF616A",
-    Token.OutPrompt: "#BF616A",
-    Token.OutPromptNum: "#D08770",
-}
+# c.TerminalInteractiveShell.highlighting_style_overrides = {
+#     Token.Prompt: "#A3BE8C",
+#     Token.PromptNum: "#BF616A",
+#     Token.OutPrompt: "#BF616A",
+#     Token.OutPromptNum: "#D08770",
+# }
 
 ## Total length of command history
 #  See also: InteractiveShell.history_length
@@ -764,7 +763,7 @@ c.TerminalInteractiveShell.highlighting_style_overrides = {
 #  terminal supports true color, the following command should print 'TRUECOLOR'
 #  in orange: printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
 #  Default: False
-c.TerminalInteractiveShell.true_color = True
+# c.TerminalInteractiveShell.true_color = True
 
 #  See also: InteractiveShell.wildcards_case_sensitive
 # c.TerminalInteractiveShell.wildcards_case_sensitive = True

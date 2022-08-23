@@ -38,20 +38,6 @@ fi
 
 # desktop
 picom &                                                             # start compositor
-xfce4-power-manager &                                               # power manager
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &         # control system-wide privileges
-eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) # credential manager
-thunar -daemon &                                                    # file manager
-nm-applet --indicator &                                             # wifi
-blueman-applet &                                                    # bluetooth tray icon
-xrandr --output HDMI-1-0 --mode 1920x1080 --rate 60 --right-of eDP1 # set refresh rate correctly
-
-# user programs
-vorta --daemonize
-protonmail-bridge --noninteractive &
-nohup nextcloud --background &
-
-# window manager
-/usr/bin/prime-offload     # prime-offload (nvidia gpu)
-awesome                    # --- start window manager ---
-sudo /usr/bin/prime-switch # execute after logout (necessary for optimus manager - nvidia gpu)
+# eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) # credential manager
+# blueman-applet &                                                    # bluetooth tray icon
+# xrandr --output HDMI-1-0 --mode 1920x1080 --rate 60 --right-of eDP1 # set refresh rate correctly

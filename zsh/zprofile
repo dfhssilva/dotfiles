@@ -2,7 +2,7 @@
 #
 # Default programs:
 export EDITOR="nvim"
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 
 # XDG:
@@ -41,9 +41,9 @@ export WINEPREFIX="${XDG_DATA_HOME}/wineprefixes/default"
 export GOPATH="${XDG_DATA_HOME}/go"
 
 # Set qt theme with kvantum:
-export QT_STYLE_OVERRIDE=kvantum
+# export QT_STYLE_OVERRIDE=kvantum
 
 # Startx silent:
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx -- vt1 &> /dev/null
-fi
+# if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+#   exec startx -- vt1 &> /dev/null
+# fi

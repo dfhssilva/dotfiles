@@ -2,20 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "nord-dircolors"]
-	path = nord-dircolors
-	url = https://github.com/arcticicestudio/nord-dircolors
-        shallow = True
-        branch = develop
-[submodule "tmux/themes/nord-tmux"]
-	path = tmux/themes/nord-tmux
-	url = https://github.com/arcticicestudio/nord-tmux.git
-        shallow = True
-        branch = develop
-[submodule "tmux/plugins/tmux-prefix-highlight"]
-	path = tmux/plugins/tmux-prefix-highlight
-	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
-        shallow = True
 [submodule "zsh/ohmyzsh"]
 	path = zsh/ohmyzsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
@@ -32,10 +18,6 @@
 [submodule "zsh/plugins/pure"]
 	path = zsh/plugins/pure
 	url = https://github.com/sindresorhus/pure.git
-        shallow = True
-[submodule "firefox/firefox-nordic-theme"]
-	path = firefox/firefox-nordic-theme
-	url = https://github.com/EliverLara/firefox-nordic-theme.git
         shallow = True
 [submodule "nvim/nvchad"]
 	path = nvim/nvchad
