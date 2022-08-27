@@ -6,9 +6,6 @@ DEFAULT_USER="dsilva"
 
 # Set plugins
 plugins=(
-  aws
-  docker
-  docker-compose
   vi-mode
   zsh-autosuggestions
   zsh-syntax-highlighting
@@ -35,13 +32,12 @@ bindkey '^x' autosuggest-clear  # ctrl + x
 
 # ------------------- User configuration -------------------
 # Activate nord dircolors
-test -r "${XDG_CONFIG_HOME}/.dir_colors" && eval $(dircolors $XDG_CONFIG_HOME/.dir_colors)
+# test -r "${XDG_CONFIG_HOME}/.dir_colors" && eval $(dircolors $XDG_CONFIG_HOME/.dir_colors)
 
 # Aliases
-alias watch-nvidia="watch -n 1 nvidia-smi"
 alias tlmgr="/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode"
-alias nvidia-settings="nvidia-settings --config=${XDG_CONFIG_HOME}/nvidia/settings"
 alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget-hsts"'
+alias code='code --extensions-dir "$XDG_DATA_HOME/vscode/extensions"'
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/dotfiles/bin" ] ; then
