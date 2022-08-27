@@ -1,5 +1,3 @@
-# profile file. Runs on login. Environmental variables are set here.
-#
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="alacritty"
@@ -11,7 +9,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # Clean up:
-export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority" # This line will break some DMs.
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
 export AWS_CONFIG_FILE="${XDG_CONFIG_HOME}/aws/config"
 export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
@@ -20,12 +17,11 @@ export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
 export npm_config_cache="${XDG_CACHE_HOME}/npm"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/pass"
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
-export CUDA_CACHE_PATH="${XDG_CACHE_HOME}/nv"
 export LESSKEY="${XDG_CONFIG_HOME}/less/lesskey"
 export NODE_REPL_HISTORY="${XDG_CACHE_HOME}/node_repl_history"
 export AWS_SHARED_CREDENTIALS_FILE="${XDG_CONFIG_HOME}/aws/credentials"
+export MINIKUBE_HOME="${XDG_DATA_HOME}/minikube"
 export HISTFILE="${XDG_DATA_HOME}/history"
-export __GL_SHADER_DISK_CACHE_PATH="${XDG_CACHE_HOME}/nv"
 export PARALLEL_HOME="${XDG_CONFIG_HOME}/parallel"
 export PYLINTHOME="${XDG_CACHE_HOME}/pylint"
 export CONDARC="${XDG_CONFIG_HOME}/conda/condarc"
@@ -42,8 +38,3 @@ export GOPATH="${XDG_DATA_HOME}/go"
 
 # Set qt theme with kvantum:
 # export QT_STYLE_OVERRIDE=kvantum
-
-# Startx silent:
-# if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-#   exec startx -- vt1 &> /dev/null
-# fi
