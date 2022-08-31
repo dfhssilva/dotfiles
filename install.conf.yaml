@@ -8,6 +8,7 @@
 - link:
     ~/.bashrc: bash/bashrc
     ~/.bash_logout: bash/bash_logout
+    ~/.config/autorandr/postswitch: autorandr/postswitch
     ~/.config/bspwm: bspwm
     ~/.config/conda/condarc: conda/condarc
     ~/.config/dunst: dunst

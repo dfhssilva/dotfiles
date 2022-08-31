@@ -3,7 +3,8 @@
 # Setup keybindings
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor eDP1 -d I II III IV V VI VII VIII IX X
+$HOME/.config/bspwm/startup  # Set monitors in external monitor if connected
 
 bspc config border_width         2
 bspc config window_gap          12
@@ -31,14 +32,10 @@ bspc config active_border_color         "#073642"
 #
 # Autostart
 #
-# Bar
-~/.config/polybar/launch.sh &
 # Notifications
 /usr/bin/dunst &
 # Polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-# Wallpaper
-nitrogen --restore &
 # Dex
 dex -a -s /etc/xdg/autostart/:~/.config/autostart/  
 # Picom
