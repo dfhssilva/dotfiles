@@ -4,36 +4,24 @@ export ZSH="$HOME/.config/oh-my-zsh"
 
 DEFAULT_USER="dsilva"
 
+ZSH_THEME="eastwood"
+
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
 # Set plugins
 plugins=(
+  git
   vi-mode
-  zsh-autosuggestions
-  zsh-syntax-highlighting
 )
 
-# Set prompt theme
-fpath+=$ZSH/custom/plugins/pure
-autoload -U promptinit; promptinit
-prompt pure
-
 source $ZSH/oh-my-zsh.sh
-
-# Move zcompdump files to XDF_CACHE_HOME
-compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
 # Vi-mode settings
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
 bindkey -v
 
-# Configure autosuggestions bindkeys
-bindkey '^f' autosuggest-accept  # ctrl + f
-bindkey '^x' autosuggest-clear  # ctrl + x
-
 # ------------------- User configuration -------------------
-# Activate nord dircolors
-# test -r "${XDG_CONFIG_HOME}/.dir_colors" && eval $(dircolors $XDG_CONFIG_HOME/.dir_colors)
-
 # Aliases
 alias tlmgr="/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode"
 alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget-hsts"'

@@ -22,3 +22,9 @@
 [submodule "nvim/nvchad"]
 	path = nvim/nvchad
 	url = https://github.com/NvChad/NvChad.git
+[submodule "nvim/astrovim"]
+	path = nvim/astrovim
+	url = https://github.com/AstroNvim/AstroNvim
+[submodule "nvim/astronvim"]
+	path = nvim/astronvim
+	url = https://github.com/AstroNvim/AstroNvim

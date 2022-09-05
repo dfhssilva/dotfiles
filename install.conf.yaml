@@ -3,12 +3,13 @@
       create: true
       relink: true
 
-- clean: ['~', '~/.config']
+- clean: ["~", "~/.config"]
 
 - link:
     ~/.bashrc: bash/bashrc
     ~/.bash_logout: bash/bash_logout
     ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
+    ~/.config/astronvim/lua/user/init.lua: nvim/astrovim_init.lua
     ~/.config/autorandr/postswitch: autorandr/postswitch
     ~/.config/bspwm: bspwm
     ~/.config/conda/condarc: conda/condarc
@@ -20,12 +21,8 @@
     # ~/.config/gtk-3.0/settings.ini: gtk-3.0/settings.ini
     # ~/.config/gtk-4.0/settings.ini: gtk-4.0/settings.ini
     ~/.config/ipython/profile_default/ipython_config.py: ipython/ipython_config.py
-    ~/.config/nvim: nvim/nvchad
-    ~/.config/nvim/lua/custom: nvim/nvcustom
+    ~/.config/nvim: nvim/astronvim
     ~/.config/oh-my-zsh: zsh/ohmyzsh
-    ~/.config/oh-my-zsh/custom/plugins:
-      force: true
-      path: zsh/plugins
     ~/.config/picom.conf: picom/picom.conf
     ~/.config/polybar: polybar
     ~/.config/rofi: rofi
@@ -36,5 +33,5 @@
     ~/.xprofile: xorg/xprofile
 
 - shell:
-  - [git submodule update --init --recursive, Install submodules]
-  - [nvim +'hi NormalFloat guibg=#1e222a' +PackerSync &, Install nvchad and plugins]
+    - [git submodule update --init --recursive, Install submodules]
+    - [nvim +PackerSync &]
