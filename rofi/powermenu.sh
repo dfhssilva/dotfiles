@@ -39,6 +39,7 @@ then
 elif [ "$selected_option" == "$sleep" ]
 then
     amixer set Master mute
+    /home/$USER/.config/bspwm/scripts/i3lock-fancy/i3lock-fancy.sh
     systemctl suspend
 else
     echo "No match"
