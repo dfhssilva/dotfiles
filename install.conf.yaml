@@ -9,13 +9,11 @@
     ~/.bashrc: bash/bashrc
     ~/.bash_logout: bash/bash_logout
     ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
-    ~/.config/astronvim/lua/user/init.lua: nvim/astrovim_init.lua
     ~/.config/conda/condarc: conda/condarc
     ~/.config/fontconfig/fonts.conf: fontconfig/fonts.conf
     ~/.config/git/config: git/gitconfig
     ~/.config/git/message: git/gitmessage
     ~/.config/ipython/profile_default/ipython_config.py: ipython/ipython_config.py
-    ~/.config/nvim: nvim/astronvim
     ~/.config/oh-my-zsh: zsh/ohmyzsh
     ~/.config/zathura/zathurarc: zathura/zathurarc
     ~/.config/zsh/.zshenv: zsh/zshenv
