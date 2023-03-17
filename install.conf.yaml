@@ -10,23 +10,13 @@
     ~/.bash_logout: bash/bash_logout
     ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
     ~/.config/astronvim/lua/user/init.lua: nvim/astrovim_init.lua
-    ~/.config/autorandr/postswitch: autorandr/postswitch
-    ~/.config/bspwm: bspwm
     ~/.config/conda/condarc: conda/condarc
-    ~/.config/dunst: dunst
-    # ~/.config/fontconfig/fonts.conf: fontconfig/fonts.conf
+    ~/.config/fontconfig/fonts.conf: fontconfig/fonts.conf
     ~/.config/git/config: git/gitconfig
     ~/.config/git/message: git/gitmessage
-    # ~/.config/gtk-2.0/gtkrc: gtk-2.0/gtkrc-2.0
-    # ~/.config/gtk-3.0/settings.ini: gtk-3.0/settings.ini
-    # ~/.config/gtk-4.0/settings.ini: gtk-4.0/settings.ini
     ~/.config/ipython/profile_default/ipython_config.py: ipython/ipython_config.py
     ~/.config/nvim: nvim/astronvim
     ~/.config/oh-my-zsh: zsh/ohmyzsh
-    ~/.config/picom.conf: picom/picom.conf
-    ~/.config/polybar: polybar
-    ~/.config/rofi: rofi
-    ~/.config/sxhkd: sxhkd
     ~/.config/zathura/zathurarc: zathura/zathurarc
     ~/.config/zsh/.zshenv: zsh/zshenv
     ~/.config/zsh/.zshrc: zsh/zshrc

@@ -38,6 +38,3 @@ export GOPATH="${XDG_DATA_HOME}/go"
 
 # Fix Alacritty different font sizes in muti-monitor setup
 export WINIT_X11_SCALE_FACTOR=1.66
-
-# Set qt theme with kvantum:
-# export QT_STYLE_OVERRIDE=kvantum
