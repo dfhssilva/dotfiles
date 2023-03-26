@@ -2,29 +2,3 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "zsh/ohmyzsh"]
-	path = zsh/ohmyzsh
-	url = https://github.com/ohmyzsh/ohmyzsh.git
-        ignore = dirty
-        shallow = True
-[submodule "zsh/plugins/zsh-syntax-highlighting"]
-	path = zsh/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-        shallow = True
-[submodule "zsh/plugins/zsh-autosuggestions"]
-	path = zsh/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
-        shallow = True
-[submodule "zsh/plugins/pure"]
-	path = zsh/plugins/pure
-	url = https://github.com/sindresorhus/pure.git
-        shallow = True
-[submodule "nvim/nvchad"]
-	path = nvim/nvchad
-	url = https://github.com/NvChad/NvChad.git
-[submodule "nvim/astrovim"]
-	path = nvim/astrovim
-	url = https://github.com/AstroNvim/AstroNvim
-[submodule "nvim/astronvim"]
-	path = nvim/astronvim
-	url = https://github.com/AstroNvim/AstroNvim
