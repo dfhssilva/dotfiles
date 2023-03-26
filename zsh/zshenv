@@ -1,5 +1,5 @@
 # Default programs:
-export EDITOR="nvim"
+export EDITOR="vim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 

@@ -6,8 +6,6 @@ DEFAULT_USER="dsilva"
 
 ZSH_THEME="eastwood"
 
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
 # Set plugins
 plugins=(
   git
